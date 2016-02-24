@@ -1,0 +1,22 @@
+{% extends "base1.html" %}
+
+{% block section %}
+<div class="row">
+	<div class="col-md-6 col-md-offset-3">
+		<div class="blog__post">
+{% if current_user.is_active %}
+<a href="{{ url_for('edit_blogpost', author_id=blogpost.author_id, blog_id=blogpost.id) }}">edit</a>
+<br>
+<a href="{{ url_for('delete_blogpost', author_id=blogpost.author_id, blog_id=blogpost.id) }}">delete</a>
+{% endif %}
+<br>
+
+
+<strong>Title:</strong> <h2 class="h2 text-capitalize">{{ blogpost.title }}</a></h2>
+<strong>Post:</strong> <pre>{{ blogpost.description }}</pre><br>
+<strong>Author:</strong> {{ blogpost.author.name }}
+
+</div>
+</div>
+</div>
+{% endblock %}

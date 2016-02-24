@@ -1,0 +1,37 @@
+{% extends "base1.html" %}
+
+{% block section %}
+
+<form class="form-message" role="form" method="post" action="">
+	{{ form.csrf_token }}
+
+	<div class="form-group">
+		<label for="title">Title</label>
+		{{ form.title(class="form-control", placeholder="title") }}
+	</div>
+
+	<span class="error bg-danger">
+		{% if form.title.errors %}
+		{% for error in form.title.errors %}
+		<div class="bg-danger">{{ error }}</div>
+		{% endfor %}
+		{% endif %}
+	</span>
+
+	<div class="form-group">
+		<label for="description">Description</label>
+		<pre> {{ form.description(class="form-control", rows="5", placeholder="description") }}</pre>
+	</div>
+
+	<span class="error bg-danger">
+		{% if form.description.errors %}
+		{% for error in form.description.errors %}
+		<div class="bg-danger">{{ error }}</div>
+		{% endfor %}
+		{% endif %}
+	</span>
+
+	<button class="btn btn-lg btn-success" type="submit">Post</button>
+</form>
+
+{% endblock %}

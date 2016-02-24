@@ -1,0 +1,76 @@
+<!doctype HTML>
+<html lang="en">
+<head>
+	<title>{% block title %}{% endblock %}</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name='author' content="Jeffrey Reiher, me@jeffreiher.com">
+	<meta name="description" content="{% block description %}{% endblock %}">
+	<meta name='keywords' content="{% block keywords %}{% endblock %}"/>
+	<meta name='copyright' content="DSAC LLC">
+	<meta name="robots" content="index,follow">
+	<link rel="shortcut icon" href="https://placehold.it/32x32">
+
+	<!-- Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" integrity="sha384-1q8mTJOASx8j1Au+a5WDVnPi2lkFfwwEAa8hDDdjZlpLegxhjVME1fgjWPGmkzs7" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="header">
+			<a href="/home">
+				<picture>
+					<!-- <source class="head" srcset="/static/images/images_dest/jwr_black_crop-200_small.svg" height="35">  -->
+					<img class="head" src="https://placehold.it/200x150" height="35" alt="JWR black logo">
+				</picture>
+			</a>
+			<div class="nav-hidden">
+				<ul class="desktop">
+					<li><a href="/home"><i class="fa fa-home fa-lg social"></i>&nbsp;&nbsp; Home</a></li>
+					<li><a href="/blog"><i class="fa fa-comments-o fa-lg social"></i>&nbsp;&nbsp; Blog</a></li>
+					<li><a href="/projects"><i class="fa fa-file-code-o fa-lg social"></i>&nbsp;&nbsp; Projects</a></li>
+				</ul>
+			</div>
+			<div class="dropdown">
+			<button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+			<span class='icon'><i class="fa fa-bars"></i></span>
+			</button>
+			<ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+				<li><a href="/home"><i class="fa fa-home fa-lg social"></i>&nbsp;&nbsp; Home</a></li>
+				<li><a href="/blog"><i class="fa fa-comments-o fa-lg social"></i>&nbsp;&nbsp; Blog</a></li>
+				<li><a href="/projects"><i class="fa fa-file-code-o fa-lg social"></i>&nbsp;&nbsp; Projects</a></li>
+				<li role="separator" class="divider"></li>
+				<li><a href="https://github.com/jreiher2003" target="_blank" ><i class="fa fa-github fa-lg social"></i>&nbsp; |&nbsp;  GitHub</a></li>
+				<li><a href="https://www.linkedin.com/nhome/" target="_blank"><i class="fa fa-linkedin fa-lg social"></i>&nbsp; |&nbsp;  LinkedIn</a></li>
+				<li><a href="https://twitter.com/BigJeffDogg" target="_blank"><i class="fa fa-twitter fa-lg social"></i>&nbsp; | &nbsp;Twitter</a></li>
+				<li><a href="https://www.facebook.com/jeff.reiher" target="_blank" ><i class="fa fa-facebook fa-lg social"></i>&nbsp;&nbsp; | &nbsp; Facebook</a></li>
+			</ul>
+			</div>
+		</div>
+		{% block section %}{% endblock %}
+		<footer>
+			<ul class="social">
+				<li style="padding-left:0px;"><a href="https://github.com/jreiher2003" target="_blank" class="git">GitHub</a></li>
+				<li><a href="https://www.linkedin.com/pub/jeff-reiher/48/9b7/132" target="_blank" class="linkedin">LinkedIn</a></li>
+				<li><a href="https://twitter.com/BigJeffDogg" target="_blank" class="twitter">Twitter</a></li>
+				<li><a href="https://www.facebook.com/jeff.reiher" target="_blank" class="facebook">Facebook</a></li>
+			</ul>	
+			<div class="bottom-footer">
+				<figure>
+				<a href="/home">
+					<picture>
+						<source class="foot" srcset="static/images/images_dest/jeffreihercom_crop-200_small.svg">
+						<img class="foot" src="static/images/images_dest/jeffreihercom_crop-200_small.png" alt="logo of jeffreiher.com">
+					</picture>
+				</a>
+				<figcaption>&#169;&nbsp;Copyright 2015 DSAC LLC.&nbsp; All Rights Resevered</figcaption>
+				</figure>
+			</div>
+		</footer>
+	</div>
+	<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+        <!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+</body>
+</html>
