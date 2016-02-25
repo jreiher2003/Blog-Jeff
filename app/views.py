@@ -16,15 +16,15 @@ def index():
 @app.route('/blog/<int:page>', methods=['GET','POST'])
 def blog(page=1):
     posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(page,3,False)
-    # posts = db.session.query(BlogPost).order_by(BlogPost.id.desc()).limit(10)
-    # posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(1, app.config['POSTS_PER_PAGE'], False)
-    return render_template('blog.html', posts=posts)
+    return render_template('blog.html', 
+                            posts=posts)
 
 
 @app.route("/blog/<int:blog_id>/<path:blog_title>/")
 def blog_post(blog_id, blog_title):
     blogpost = db.session.query(BlogPost).filter_by(id=blog_id).one()
-    return render_template('blog-post.html', blogpost=blogpost)
+    return render_template('blog-post.html', 
+                            blogpost=blogpost)
 
 
 @app.route("/blog/<int:author_id>/newpost/", methods=["GET","POST"])
@@ -40,7 +40,9 @@ def new_blogpost(author_id):
         flash('your post was successful', 'success')
         return redirect(url_for('blog'))
 
-    return render_template('create-post.html', form=form, error=error)
+    return render_template('create-post.html', 
+                            form=form, 
+                            error=error)
 
 
 @app.route("/blog/<int:author_id>/<int:blog_id>/edit/", methods=["GET","POST"])
@@ -56,11 +58,11 @@ def edit_blogpost(author_id, blog_id):
         flash("Post successfully edited", "success")
         return redirect(url_for('blog'))
     
-    return render_template('edit-post.html', editpost=editpost, 
-                            form=form, error=error)
+    return render_template('edit-post.html', 
+                            editpost=editpost, 
+                            form=form, 
+                            error=error)
         
-
-
 
 @app.route("/blog/<int:author_id>/<int:blog_id>/delete/",methods=["GET","POST"])
 def delete_blogpost(author_id, blog_id):
@@ -71,9 +73,10 @@ def delete_blogpost(author_id, blog_id):
         flash("Post Deleted", "danger")
         return redirect(url_for('blog'))
 
-    return render_template('delete-post.html',deletepost=deletepost)
+    return render_template('delete-post.html',
+                            deletepost=deletepost)
 
-# route for handling the login page logic
+
 @app.route('/login', methods=["GET", "POST"])
 def login():
     error = None
@@ -91,7 +94,9 @@ def login():
             flash("Try again", "danger")
             return redirect(url_for('login'))
 
-    return render_template("login.html", form=form, error=error)	
+    return render_template("login.html", 
+                            form=form, 
+                            error=error)	
 
 
 @app.route('/logout')
