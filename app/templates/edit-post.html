@@ -1,41 +1,42 @@
 {% extends "base1.html" %}
 
 {% block section %}
-<h4>edit page</h4>
-	
+<div class="container">
+	<div class="row post">
+		<div class="col-md-8 col-md-offset-2">
+			<h2 class="">Edit a Post</h2>
 
+			<form class="" method="post" action="">
+				{{ form.csrf_token }}
+				<div class="form-group">
+					{{ form.title.label(class="sr-only") }}
+					{{ form.title(class="form-control input-lg", placeholder="put your title here...") }}
+				</div>
+				<span class="error bg-danger">
+					{% if form.title.errors %}
+					{% for error in form.title.errors %}
+					<div class="bg-danger">{{ error }}</div>
+					{% endfor %}
+					{% endif %}
+				</span>
 
-<form class="form-message" role="form" method="post" action="" }}>
-	{{ form.csrf_token }}
-
-	<div class="form-group">
-		<label for="title">Title</label>
-		{{ form.title(class="form-control") }}
+				<div class="form-group">
+					{{ form.description.label(class="sr-only") }}
+					{{ form.description(class="form-control input-lg", rows="5", placeholder="put your thoughts here limit 140 characters...") }}
+				</div>
+				<span class="error bg-danger">
+					{% if form.description.errors %}
+					{% for error in form.description.errors %}
+					<div class="bg-danger">{{ error }}</div>
+					{% endfor %}
+					{% endif %}
+				</span>
+				<div class="form-group">
+				{{ form.submit(class="btn btn-lg btn-primary blogbutton",value="Edit") }}
+				<a class="btn btn-lg" href="{{ url_for('blog') }}">Cancel</a>
+				</div>
+			</form>
+		</div>
 	</div>
-
-	<span class="error bg-danger">
-		{% if form.title.errors %}
-		{% for error in form.title.errors %}
-		<div class="bg-danger">{{ error }}</div>
-		{% endfor %}
-		{% endif %}
-	</span>
-
-	<div class="form-group">
-		<label for="description">Description</label>
-		<pre>{{ form.description(class="form-control", rows="5") }}</pre>
-	</div>
-
-	<span class="error bg-danger">
-		{% if form.description.errors %}
-		{% for error in form.description.errors %}
-		<div class="bg-danger">{{ error }}</div>
-		{% endfor %}
-		{% endif %}
-	</span>
-
-	<button class="btn btn-lg btn-success" type="submit">Edit</button>
-	<a class="btn btn-lg btn-warning" href="/blog/">Cancel</a>
-</form>
-
+</div>
 {% endblock %}
