@@ -177,24 +177,9 @@ ul.flashes {
 	list-style: none;
 }
 /*####### Login Form #############*/
-/*.login-form {
-	margin: 100px 0;
-}
-.delete {
-	margin: 50px 0 320px auto;
-}
-.blog__post {
-	margin: auto 0 265px auto;
-}
-pre, textarea {
-	border: 0;
-	font-family: monospace! important;
-	background-color: rgba(255,255,255,1);
-	font-size: 16px;
-}
-.blog-post {
-	/*border: 1px solid rgba(220,220,220,1);
-	padding: 10px;*/*/
+.login-page {
+	margin-top: 20px;
+	margin-bottom: 150px;
 }
 /*############## comments section #################
 #################################################*/
