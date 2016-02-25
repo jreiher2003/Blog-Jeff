@@ -12,3 +12,4 @@ class LoginForm(Form):
 class MessageForm(Form):
 	title = TextField('Title', validators=[DataRequired()])
 	description = TextAreaField('Description', validators=[DataRequired(),Length(max=140)])
+	submit = SubmitField("Create Post")
