@@ -177,7 +177,7 @@ ul.flashes {
 	list-style: none;
 }
 /*####### Login Form #############*/
-.login-form {
+/*.login-form {
 	margin: 100px 0;
 }
 .delete {
@@ -194,7 +194,7 @@ pre, textarea {
 }
 .blog-post {
 	/*border: 1px solid rgba(220,220,220,1);
-	padding: 10px;*/
+	padding: 10px;*/*/
 }
 /*############## comments section #################
 #################################################*/
