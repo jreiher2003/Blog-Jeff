@@ -6,7 +6,6 @@
 	<div class="row post">
 		<div class="col-md-8 col-md-offset-2">
 			<h2 class="">Add a Post</h2>
-
 			<form class="" method="post" action="">
 				{{ form.csrf_token }}
 				<div class="form-group">
@@ -20,7 +19,6 @@
 					{% endfor %}
 					{% endif %}
 				</span>
-
 				<div class="form-group">
 					{{ form.description.label(class="sr-only") }}
 					{{ form.description(class="form-control input-lg", rows="5", placeholder="put your thoughts here limit 140 characters...") }}
