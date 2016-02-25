@@ -30,7 +30,7 @@ def blog_post(blog_id, blog_title):
 @app.route("/blog/<int:author_id>/newpost/", methods=["GET","POST"])
 def new_blogpost(author_id):
     error = None
-    form = BlogPost(request.form)
+    form = MessageForm(request.form)
     if form.validate_on_submit():
         newpost = BlogPost(title=form.title.data, 
                            description=form.description.data,
@@ -47,7 +47,7 @@ def new_blogpost(author_id):
 def edit_blogpost(author_id, blog_id):
     error = None
     editpost = db.session.query(BlogPost).filter_by(id=blog_id).one()
-    form = BlogPost(obj=editpost)
+    form = MessageForm(obj=editpost)
     if form.validate_on_submit():
         editpost.title = form.title.data
         editpost.description = form.description.data
