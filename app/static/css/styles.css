@@ -176,8 +176,8 @@ li.recent__post_hr {
 ul.flashes {
 	list-style: none;
 }
-/*####### Login Form #############*/
-.login-page {
+/*####### Login Form - Create Edit Delete Post #############*/
+.login-page, .post {
 	margin-top: 20px;
 	margin-bottom: 150px;
 }
