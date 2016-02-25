@@ -3,10 +3,7 @@ html {
 }
 img.profile {
 	width: 75px;
-	margin-top: 8px;
-    -ms-transform: rotate(-90deg); 
-    -webkit-transform: rotate(-90deg); 
-    transform: rotate(-90deg);
+	border:  1px solid rgba(175,175,175,1);
 }
 .jcarousel ul li img {
 	display: block;
