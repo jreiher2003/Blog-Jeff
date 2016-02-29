@@ -1,61 +1,16 @@
 html {
 	background-color: #e9eaed;
+	font-size: 16px;
 }
-img.profile {
-	width: 75px;
-	border:  1px solid rgba(175,175,175,1);
-}
+/*##### front page index page  #######*/
 .jcarousel ul li img {
 	display: block;
 	margin-left: auto;
 	margin-right: auto;
 	border: 2px solid rgba(0,0,0,1);
 }
-span.small {
-	font-size: .25em; 
-	text-transform: uppercase; 
-	margin-left: 1.2em; 
-} 
-hr {
-	width: 100%;
-}
-hr.style-eight {
-    padding: 0;
-    border: none;
-    border-top: 12px double rgba(51,51,51,1);
-    color: #333;
-    text-align: center;
-}
-hr.style-eight:before {
-}
- .info1, .info2 {
-	width: 100%;
-	height: auto;
-	background-color: rgba(255,255,255,1);
-	border-top: 1px solid;
-}
-.info1 h4, .info2 h4 {
-	text-align: center;
-	font-weight: bold;
-	font-size: 1.8em
-}
-.info1 ul, .info2 ul {
-	line-height: 1.5;
-	font-size: 1.5;
-	padding-left: 0;
-}
-.info1 ul li, .info2 ul li {
-	list-style-type: none;
-	padding-top: 4px;
-	font-size: 1.3em;
-}
-.info1 ul li:before, .info2 ul li:before {
-	content: "\27A2";
-	padding-right: 8px;
-}
+/*########## footer ##################*/
 footer {
-	width: 100%;
-	height: auto;
 	background-color: rgba(0,0,0,1);
 }
 footer ul li: {
@@ -170,10 +125,12 @@ li.recent__post_hr {
     color: #333;
     text-align: center;
 }
-ul.flashes {
-	list-style: none;
-}
+
 /*############## blog-post page ###########################*/
+img.profile {
+	width: 75px;
+	border:  1px solid rgba(175,175,175,1);
+}
 .blog__post {
 	margin-bottom: 225px;
 }

@@ -49,24 +49,21 @@
 							</ul>
 						</li>
 					</ul>
+					<ul class="list-unstyled">
 					{% if current_user.is_active %}
-					<ul class="list-unstyled nav-call">
-						<li class="pull-right hidden-xs"><a href="{{ url_for('logout') }}">Logout</a></li>
-						<li class="pull-right hidden-xs">{{ current_user.name }}&nbsp;|</li>
-					</ul>
+						<li class="pull-right"><a href="#">{{ current_user.name }}</a></li>
+						<li class="pull-right"><a href="{{ url_for('logout') }}">Logout</a></li>
 					{% else %}
-					<ul class="list-unstyled nav-call">
-						<li class="pull-right hidden-xs">|&nbsp;<a href="{{ url_for('register') }}">Register</a></li>
-
+						<li class="pull-right hidden-xs">&nbsp;|&nbsp;<a href="{{ url_for('register') }}">Sign Up</a></li>
 						<li class="pull-right hidden-xs"><a href="{{ url_for('login') }}">Login</a></li>
-					</ul>
 					{% endif %}
+					</ul>
 				</div><!--/.nav-collapse -->
 			</div><!--/.container-fluid nav -->
 		</nav>
 		{% with messages = get_flashed_messages(with_categories=true) %}
 		{% if messages %}
-		<ul class='flashes'>
+		<ul class='flashes list-unstyled'>
 			{% for category, message in messages %}
 			<li class="alert alert-{{ category }}" role="alert">{{ message }}</li>
 			{% endfor %}
