@@ -51,11 +51,11 @@
 					</ul>
 					<ul class="list-unstyled">
 					{% if current_user.is_active %}
-						<li class="pull-right"><a href="#">{{ current_user.name }}</a></li>
-						<li class="pull-right"><a href="{{ url_for('logout') }}">Logout</a></li>
+						<li class="pull-right">&nbsp;|&nbsp;<a href="{{ url_for('logout') }}">Logout</a></li>
+						<li class="pull-right">{{ current_user.name }}</li>
 					{% else %}
-						<li class="pull-right hidden-xs">&nbsp;|&nbsp;<a href="{{ url_for('register') }}">Sign Up</a></li>
-						<li class="pull-right hidden-xs"><a href="{{ url_for('login') }}">Login</a></li>
+						<li class="pull-right">&nbsp;|&nbsp;<a href="{{ url_for('register') }}">Sign Up</a></li>
+						<li class="pull-right"><a href="{{ url_for('login') }}">Login</a></li>
 					{% endif %}
 					</ul>
 				</div><!--/.nav-collapse -->
