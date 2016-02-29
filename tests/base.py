@@ -1,5 +1,6 @@
 from flask.ext.testing import TestCase
 from app import app, db
+from app.models import User
 
 
 
@@ -12,9 +13,9 @@ class BaseTestCase(TestCase):
 
     def setUp(self):
         db.create_all()
-        # db.session.add(Place(name='Testname'))
-        
-        # db.session.commit()
+        one = User(name='Testname', email="test@test.com", password="password")
+        db.session.add(one)
+        db.session.commit()
 
     def tearDown(self):
         db.session.remove()

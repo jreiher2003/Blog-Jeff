@@ -22,7 +22,7 @@ from app import views
 from models import *
 
 login_manager.login_view = "login"
-login_manager.login_message = u'You need to login to post'
+login_manager.login_message = u'You need to login first!'
 login_manager.login_message_category = 'info'
 
 

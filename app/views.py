@@ -1,19 +1,19 @@
-from app import app, db
+from app import app, db # pragma no cover
 from flask import render_template, redirect, \
-    url_for, request, session, flash
-from flask.ext.login import login_user, logout_user, login_required, current_user
-from forms import LoginForm, MessageForm, RegisterForm
-from app.models import User, BlogPost, bcrypt
+    url_for, request, session, flash # pragma no cover
+from flask.ext.login import login_user, logout_user, login_required, current_user # pragma no cover
+from forms import LoginForm, MessageForm, RegisterForm # pragma no cover
+from app.models import User, BlogPost, bcrypt # pragma no cover
 
 
-@app.route('/')
-@app.route('/home')
+@app.route('/')# pragma no cover
+@app.route('/home')# pragma no cover
 def index():
     return render_template('index.html')
 
 
-@app.route('/blog', methods=['GET', 'POST'])
-@app.route('/blog/<int:page>', methods=['GET','POST'])
+@app.route('/blog', methods=['GET', 'POST'])# pragma no cover
+@app.route('/blog/<int:page>', methods=['GET','POST'])# pragma no cover
 def blog(page=1):
     posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(page,5,False)
     return render_template('blog.html', 
@@ -77,7 +77,7 @@ def delete_blogpost(author_id, blog_id):
                             deletepost=deletepost)
 
 
-@app.route('/login', methods=["GET", "POST"])
+@app.route('/login', methods=["GET", "POST"])# pragma no cover
 def login():
     error = None
     form = LoginForm(request.form)
@@ -91,7 +91,7 @@ def login():
             flash("You Were Signin in. Yea!", 'success')
             return redirect(url_for('blog'))
         else:
-            flash("Try again", "danger")
+            flash("<strong>Invalid Credentials.</strong> Please try again.", "danger")
             return redirect(url_for('login'))
 
     return render_template("login.html", 
@@ -99,7 +99,7 @@ def login():
                             error=error)	
 
 
-@app.route('/logout')
+@app.route('/logout')# pragma no cover
 @login_required
 def logout():
     logout_user()
@@ -108,7 +108,7 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route("/register", methods=["GET","POST"])
+@app.route("/register", methods=["GET","POST"])# pragma no cover
 def register():
     error = None
     form = RegisterForm()
