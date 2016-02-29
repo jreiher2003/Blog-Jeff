@@ -177,6 +177,9 @@ ul.flashes {
 .blog__post {
 	margin-bottom: 225px;
 }
+.small_rp {
+	font-size: 10px;
+}
 /*####### Login Form - Create Edit Delete Post #############*/
 .login-page, .post {
 	margin-bottom: 100px;
