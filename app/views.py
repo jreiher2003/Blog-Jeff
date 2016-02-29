@@ -2,7 +2,7 @@ from app import app, db
 from flask import render_template, redirect, \
     url_for, request, session, flash
 from flask.ext.login import login_user, logout_user, login_required, current_user
-from forms import LoginForm, MessageForm
+from forms import LoginForm, MessageForm, RegisterForm
 from app.models import User, BlogPost, bcrypt
 
 
@@ -106,4 +106,22 @@ def logout():
     session.pop('logged_in', None)
     flash('You were logged out.', 'warning')
     return redirect(url_for('index'))
+
+
+@app.route("/register", methods=["GET","POST"])
+def register():
+    error = None
+    form = RegisterForm()
+    if form.validate_on_submit():
+        user = User(
+            name=form.username.data,
+            email=form.email.data,
+            password=form.password.data
+        )
+        db.session.add(user)
+        db.session.commit()
+        login_user(user)
+        flash("Congrats on your new account!", "success")
+        return redirect(url_for("blog"))
+    return render_template("register.html", form=form, error=error)
 
