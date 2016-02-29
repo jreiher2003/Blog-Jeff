@@ -3,5 +3,5 @@ venv/
 *.db
 commands.txt
 *.bat
-#*.ini
+*.ini
 coverage/
