@@ -1,0 +1,68 @@
+{% extends "base1.html" %}
+
+{% block section %}
+<div class="container">
+    <div class="row login-page">
+        <div class="col-xs-12 col-md-4 col-md-offset-4">
+            <h2 class="text-center">Register</h2>
+            <hr/>
+            <form class="form-horizontal" method="post" action="">
+            {{ form.csrf_token }}
+                <div class="form-group">
+                    {{ form.username.label(for="inputUsername", class="sr-only") }}
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-user" aria-hidden="true"></span></div>
+                        {{ form.username(placeholder="username", type="text", id="inputUsername", class="form-control input-lg") }}
+                    </div>
+                    {% if form.username.errors %}
+                    {% for error in form.username.errors %}
+                    <div class="bg-danger">{{ error }}</div>
+                    {% endfor %}
+                    {% endif %}
+                </div>
+
+                <div class="form-group">
+                    {{ form.email.label(for="email", class="sr-only") }}
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-envelope" aria-hidden="true"></span></div>
+                        {{ form.email(placeholder="email", id="email", class="form-control input-lg") }}
+                    </div>
+                    {% if form.email.errors %}
+                    {% for error in form.email.errors %}
+                    <div class="bg-danger">{{ error }}</div>
+                    {% endfor %}
+                    {% endif %}
+                        
+                </div> 
+                <div class="form-group">
+                    {{ form.password.label(for="inputPassword", class="sr-only") }}
+                    <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-lock" aria-hidden="true"></span></div>
+                        {{ form.password(placeholder="password", type="password", class="form-control input-lg", id="inputPassword") }}
+                    </div>
+                        {% if form.password.errors %}
+                        {% for error in form.password.errors %}
+                        <div class="bg-danger">{{ error }}</div>
+                        {% endfor %}
+                        {% endif %}
+                </div>
+                <div class="form-group">
+                    {{ form.confirm.label(for="confirm", class="sr-only") }}
+                     <div class="input-group">
+                        <div class="input-group-addon"><span class="glyphicon glyphicon-ok" aria-hidden="true"></span></div>
+                        {{ form.confirm(placeholder="confirm password", id="confirm", class="form-control input-lg") }}
+                    </div>
+                        {% if form.confirm.errors %}
+                        {% for error in form.confirm.errors %}
+                        <div class="bg-danger">{{ error }}</div>
+                        {% endfor %}
+                        {% endif %}
+                </div>
+
+<button class="btn btn-sm btn-success" type="submit">Register!</button>
+</form>
+
+</div>
+</div>
+</div>
+{% endblock %}
