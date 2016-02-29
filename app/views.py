@@ -15,7 +15,7 @@ def index():
 @app.route('/blog', methods=['GET', 'POST'])
 @app.route('/blog/<int:page>', methods=['GET','POST'])
 def blog(page=1):
-    posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(page,3,False)
+    posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(page,5,False)
     return render_template('blog.html', 
                             posts=posts)
 
