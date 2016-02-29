@@ -17,7 +17,6 @@ class TestConfig(BaseConfig):
 
 class DevelopmentConfig(BaseConfig):
     DEBUG = True
-    # print SQLALCHEMY_DATABASE_URI
 
 
 class ProductionConfig(BaseConfig):
