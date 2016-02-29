@@ -56,8 +56,8 @@
 					</ul>
 					{% else %}
 					<ul class="list-unstyled nav-call">
-						<li class="pull-right hidden-xs">|&nbsp;<a href="#">Register</a></li>
-						
+						<li class="pull-right hidden-xs">|&nbsp;<a href="{{ url_for('register') }}">Register</a></li>
+
 						<li class="pull-right hidden-xs"><a href="{{ url_for('login') }}">Login</a></li>
 					</ul>
 					{% endif %}
