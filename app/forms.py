@@ -3,16 +3,16 @@ from wtforms import TextField, PasswordField, TextAreaField, BooleanField, Submi
 from wtforms.validators import DataRequired, Length, Email, EqualTo
 
 class LoginForm(Form):
-	username = TextField('Username', validators=[DataRequired()])
-	password = PasswordField('Password', validators=[DataRequired()])
-	remember_me = BooleanField('Remember me.')
-	submit = SubmitField("Sign In")
+    username = TextField('Username', validators=[DataRequired()])
+    password = PasswordField('Password', validators=[DataRequired()])
+    remember_me = BooleanField('Remember me.')
+    submit = SubmitField("Sign In")
 
 
 class MessageForm(Form):
-	title = TextField('Title', validators=[DataRequired()])
-	description = TextAreaField('Description', validators=[DataRequired(),Length(max=140)])
-	submit = SubmitField("Create Post")
+    title = TextField('Title', validators=[DataRequired()])
+    description = TextAreaField('Description', validators=[DataRequired(),Length(max=140)])
+    submit = SubmitField("Create Post")
 
 
 class RegisterForm(Form):

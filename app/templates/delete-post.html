@@ -3,16 +3,16 @@
 {% block section %}
 
 <div class="container">
-	<div class="row delete">
-		<div class="col-md-6 col-md-offset-3">
-			<h4>Do you want to delete: <strong> {{ deletepost.title }}</strong>?</h4>
-			<form class="form-inline" method="POST" action="">
-				<div class="form-group">
-					<input class="btn btn-danger blogbutton" type="submit" value="Delete Item">
-					<a class="btn btn-lg" href="{{ url_for('blog') }}">Cancel</a>
-				</div>
-			</form>
-		</div>
-	</div>
+    <div class="row delete">
+        <div class="col-md-6 col-md-offset-3">
+            <h4>Do you want to delete: <strong> {{ deletepost.title }}</strong>?</h4>
+            <form class="form-inline" method="POST" action="">
+                <div class="form-group">
+                    <input class="btn btn-danger blogbutton" type="submit" value="Delete Item">
+                    <a class="btn btn-lg" href="{{ url_for('blog') }}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}

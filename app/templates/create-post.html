@@ -3,39 +3,39 @@
 {% block section %}
 
 <div class="container">
-	<div class="row post">
-		<div class="col-md-8 col-md-offset-2">
-			<h2 class="">Add a Post</h2>
-			<form class="" method="post" action="">
-				{{ form.csrf_token }}
-				<div class="form-group">
-					{{ form.title.label(class="sr-only") }}
-					{{ form.title(class="form-control input-lg", placeholder="put your title here...") }}
-				</div>
-				<span class="error bg-danger">
-					{% if form.title.errors %}
-					{% for error in form.title.errors %}
-					<div class="bg-danger">{{ error }}</div>
-					{% endfor %}
-					{% endif %}
-				</span>
-				<div class="form-group">
-					{{ form.description.label(class="sr-only") }}
-					{{ form.description(class="form-control input-lg", rows="5", placeholder="put your thoughts here limit 140 characters...") }}
-				</div>
-				<span class="error bg-danger">
-					{% if form.description.errors %}
-					{% for error in form.description.errors %}
-					<div class="bg-danger">{{ error }}</div>
-					{% endfor %}
-					{% endif %}
-				</span>
-				<div class="form-group">
-				{{ form.submit(class="btn btn-primary input-lg blogbutton") }}
-				<a class="btn btn-lg" href="{{ url_for('blog') }}">Cancel</a>
-				</div>
-			</form>
-		</div>
-	</div>
+    <div class="row post">
+        <div class="col-md-8 col-md-offset-2">
+            <h2 class="">Add a Post</h2>
+            <form class="" method="post" action="">
+                {{ form.csrf_token }}
+                <div class="form-group">
+                    {{ form.title.label(class="sr-only") }}
+                    {{ form.title(class="form-control input-lg", placeholder="put your title here...") }}
+                </div>
+                <span class="error bg-danger">
+                    {% if form.title.errors %}
+                    {% for error in form.title.errors %}
+                    <div class="bg-danger">{{ error }}</div>
+                    {% endfor %}
+                    {% endif %}
+                </span>
+                <div class="form-group">
+                    {{ form.description.label(class="sr-only") }}
+                    {{ form.description(class="form-control input-lg", rows="5", placeholder="put your thoughts here limit 140 characters...") }}
+                </div>
+                <span class="error bg-danger">
+                    {% if form.description.errors %}
+                    {% for error in form.description.errors %}
+                    <div class="bg-danger">{{ error }}</div>
+                    {% endfor %}
+                    {% endif %}
+                </span>
+                <div class="form-group">
+                {{ form.submit(class="btn btn-primary input-lg blogbutton") }}
+                <a class="btn btn-lg" href="{{ url_for('blog') }}">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
 </div>
 {% endblock %}

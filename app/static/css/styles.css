@@ -1,82 +1,82 @@
 html {
-	background-color: #e9eaed;
-	font-size: 16px;
+    background-color: #e9eaed;
+    font-size: 16px;
 }
 /*########## footer ##################*/
 footer {
-	background-color: rgba(0,0,0,1);
+    background-color: rgba(0,0,0,1);
 }
 footer ul li: {
-	list-style: none;
-	padding: 0;
+    list-style: none;
+    padding: 0;
 }
 ul.social {
-	font-family: FontAwesome;
-	font-size: 1em;
-	width: 100%;
-	text-align: center;
-	padding: 20px 0 20px 0;
-	margin: 10px 0 10px 0;
-	border-bottom: 2px solid rgba(175,175,175,1);
+    font-family: FontAwesome;
+    font-size: 1em;
+    width: 100%;
+    text-align: center;
+    padding: 20px 0 20px 0;
+    margin: 10px 0 10px 0;
+    border-bottom: 2px solid rgba(175,175,175,1);
 }
 ul.social li {
-	display: inline-block;
-	position: relative;
-	width: auto;
-	height: auto;
-	line-height: 20px;
-	padding-left: 25px;
-	font-size: 1.3em;
-	color: rgba(175,175,175,1);
+    display: inline-block;
+    position: relative;
+    width: auto;
+    height: auto;
+    line-height: 20px;
+    padding-left: 25px;
+    font-size: 1.3em;
+    color: rgba(175,175,175,1);
 }
 .social li a {
-	position: relative;
-	color: rgba(175,175,175,1);
-	display: block;
-	width: auto;
-	text-decoration: none;
+    position: relative;
+    color: rgba(175,175,175,1);
+    display: block;
+    width: auto;
+    text-decoration: none;
 }
 .social li a:hover {
-	color: rgba(255,255,255,1);
+    color: rgba(255,255,255,1);
 }
 .git:before {
-	content: '\f09b';
-	padding-right: 10px;
+    content: '\f09b';
+    padding-right: 10px;
 }
 .linkedin:before {
-	content: '\f0e1';
-	padding-right: 10px;
+    content: '\f0e1';
+    padding-right: 10px;
 }
 .twitter:before {
-	content: '\f099';
-	padding-right: 10px;
+    content: '\f099';
+    padding-right: 10px;
 }
 .facebook:before {
-	content: '\f082';
-	padding-right: 10px;
+    content: '\f082';
+    padding-right: 10px;
 }
 .bottom-footer {
-	width: 100%;
-	text-align: center;
-	padding: 5px;
+    width: 100%;
+    text-align: center;
+    padding: 5px;
 }
 img.foot {
-	width: 200px;
-	display: block;
-	margin: 0 auto;
+    width: 200px;
+    display: block;
+    margin: 0 auto;
 }
 figure {
-	margin-bottom: 10px;	
+    margin-bottom: 10px;    
 }
 figcaption {
-	color: rgba(175,175,175,1);
+    color: rgba(175,175,175,1);
 }
 /*##### front page index page  #######*/
 .jcarousel ul li img {
-	display: block;
-	margin-left: auto;
-	margin-right: auto;
-	border: 2px solid rgba(0,0,0,1);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    border: 2px solid rgba(0,0,0,1);
 }
 hr.style-eight {
     height: 12px;
@@ -85,30 +85,30 @@ hr.style-eight {
 }
 /*########## blog page #####################*/
 .blog__head {
-	background-color: rgba(75,75,75,1);
-	border: 1px solid rgba(220,220,220,1);
-	
+    background-color: rgba(75,75,75,1);
+    border: 1px solid rgba(220,220,220,1);
+    
 }
 .blog__head__border {
-	border: 1px solid rgba(220,220,220,1);
-	box-shadow: 1px 1px 1px rgba(220,220,220,1);
+    border: 1px solid rgba(220,220,220,1);
+    box-shadow: 1px 1px 1px rgba(220,220,220,1);
 }
 .blog__head h2 {
-	color: rgba(250,250,250,1);
+    color: rgba(250,250,250,1);
 }
 .sub__blog__head {
-	margin-top: 30px;
-	background-color: rgba(245,245,245,.9);
-	height: 30px;
+    margin-top: 30px;
+    background-color: rgba(245,245,245,.9);
+    height: 30px;
     line-height:30px;
 }
 .recent__post {
-	text-align: center;
-	background: rgba(245,245,245,.9);
-	padding: 15px;
+    text-align: center;
+    background: rgba(245,245,245,.9);
+    padding: 15px;
 }
 li.recent__post_hr {
-	padding: 0;
+    padding: 0;
     border: 1px solid rgba(220,220,220,1);
     color: #333;
     text-align: center;
@@ -117,26 +117,26 @@ li.recent__post_hr {
 
 /*############## blog-post page ###########################*/
 img.profile {
-	width: 75px;
-	border:  1px solid rgba(175,175,175,1);
-	margin-top: 8px;
+    width: 75px;
+    border:  1px solid rgba(175,175,175,1);
+    margin-top: 8px;
 }
 .blog__post {
-	margin-bottom: 225px;
+    margin-bottom: 225px;
 }
 .small_rp {
-	font-size: 10px;
+    font-size: 10px;
 }
 /*####### Login Form - Create Edit Delete Post #############*/
 .login-page, .post {
-	margin-bottom: 100px;
+    margin-bottom: 100px;
 }
 .delete {
-	margin-top: 20px;
-	margin-bottom: 320px;
+    margin-top: 20px;
+    margin-bottom: 320px;
 }
 .blogbutton {
-	font-size: 16px;
+    font-size: 16px;
 }
 /*############## comments section #################*/
 /*#################################################*/
@@ -144,50 +144,50 @@ img.profile {
     /*padding:0px;*/
 }
 .panel {
-	position:relative;
+    position:relative;
 }
 .panel>.panel-heading:after,.panel>.panel-heading:before{
-	position:absolute;
-	top:11px;left:-16px;
-	right:100%;
-	width:0;
-	height:0;
-	display:block;
-	content:" ";
-	border-color:transparent;
-	border-style:solid solid outset;
-	pointer-events:none;
+    position:absolute;
+    top:11px;left:-16px;
+    right:100%;
+    width:0;
+    height:0;
+    display:block;
+    content:" ";
+    border-color:transparent;
+    border-style:solid solid outset;
+    pointer-events:none;
 }
 .panel>.panel-heading:after{
-	border-width:7px;
-	border-right-color:#f7f7f7;
-	margin-top:1px;
-	margin-left:2px;
+    border-width:7px;
+    border-right-color:#f7f7f7;
+    margin-top:1px;
+    margin-left:2px;
 }
 .panel>.panel-heading:before{
-	border-right-color:#ddd;
-	border-width:8px;
+    border-right-color:#ddd;
+    border-width:8px;
 }
 @media screen and (min-width: 991px) {
-	body {
-		width: 1120px;
-		margin: auto;
-	}
-	footer {
-		padding: 40px 0 20px 0;
-		margin: 0;
-	}
-	ul.social {
-		width: 50%;
-		float: right;
-		margin-right: 20px;
-		border-top: 2px solid rgba(175,175,175,1);
-	}
-	.bottom-footer {
-		width: 50%;
-	}
-	.recent__post {
-		text-align: left;
-	}
+    body {
+        width: 1120px;
+        margin: auto;
+    }
+    footer {
+        padding: 40px 0 20px 0;
+        margin: 0;
+    }
+    ul.social {
+        width: 50%;
+        float: right;
+        margin-right: 20px;
+        border-top: 2px solid rgba(175,175,175,1);
+    }
+    .bottom-footer {
+        width: 50%;
+    }
+    .recent__post {
+        text-align: left;
+    }
 
 }

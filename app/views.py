@@ -96,7 +96,7 @@ def login():
 
     return render_template("login.html", 
                             form=form, 
-                            error=error)	
+                            error=error)    
 
 
 @app.route('/logout')# pragma no cover

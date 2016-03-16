@@ -5,7 +5,7 @@ from app.models import User
 from flask.ext.login import current_user
 
 class TestLogin(BaseTestCase):
-	 # Ensure that Flask was set up correctly
+     # Ensure that Flask was set up correctly
     def test_index(self):
         response = self.client.get('/login', content_type='html/text')
         self.assertEqual(response.status_code, 200)
@@ -23,7 +23,7 @@ class TestLogin(BaseTestCase):
 
      # # Ensure logout behaves correctly
     def test_logout(self):
-    	response = self.client.post('/login', data=dict(username="Testname", password="password"), follow_redirects=True)
+        response = self.client.post('/login', data=dict(username="Testname", password="password"), follow_redirects=True)
         response = self.client.get('/logout', follow_redirects=True)
         self.assertIn(b'You were logged out', response.data)
 
