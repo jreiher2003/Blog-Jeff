@@ -3,113 +3,121 @@
 {% block description %}A personal web page to connect with Jeffrey Reiher{% endblock %}
 {% block keywords %}Jeffrey Reiher, Jeff Reiher, Web Developer, fullstack developer{% endblock %}
 {% block section %}
-<div class="row">
-    <div class="col-md-8">
-        <div class="wrapper">
-            <div class="jcarousel-wrapper">
-                <div class="jcarousel">
-                    <ul>
-                        <li>
-                            <picture>
-                            <!-- <source srcset="/static/images/images_production/sunset_jeff1.webp" type="image/webp"> -->
-                            <img src="{{ url_for('static', filename='images/sunset_jeff1.jpg') }}" alt="Jeff Reiher hanging out at the beach at sunset.">
-                            </picture>
-                        </li>
-                        <li>
-                            <picture>
-                            <!-- <source srcset="/static/images/images_production/boardwalk_crop.webp" type="image/webp"> -->
-                            <img src="{{ url_for('static', filename='images/purple_i.jpg') }}" alt="Cape Haze, Florida. The intercoastal at sunset.">
-                            </picture>
-                        </li>
+<div class="container">
+    <div class="col-md-12">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="wrapper">
+                    <div class="jcarousel-wrapper">
+                        <div class="jcarousel">
+                            <ul>
+                                <li>
+                                    <picture>
+                                    <!-- <source srcset="/static/images/images_production/sunset_jeff1.webp" type="image/webp"> -->
+                                    <img src="{{ url_for('static', filename='images/sunset_jeff1.jpg') }}" alt="Jeff Reiher hanging out at the beach at sunset.">
+                                    </picture>
+                                </li>
+                                <li>
+                                    <picture>
+                                    <!-- <source srcset="/static/images/images_production/boardwalk_crop.webp" type="image/webp"> -->
+                                    <img src="{{ url_for('static', filename='images/purple_i.jpg') }}" alt="Cape Haze, Florida. The intercoastal at sunset.">
+                                    </picture>
+                                </li>
 
-                        <li>
-                            <picture>
-                            <!-- <source srcset="/static/images/images_production/boat_crop.webp" type="image/webp"> -->
-                            <img src="{{ url_for('static', filename='images/sunset_jeff1.jpg') }}" alt="Englewood Florda, a historic fishing boat docked at the Fishery bar and grill.">
-                            </picture>
-                        </li>
-                        <li>
-                            <picture>
-                            <!-- <source srcset="/static/images/images_production/jeff_beach_crop.webp" type="image/webp"> -->
-                            <img src="{{ url_for('static', filename='images/purple_i.jpg') }}" alt="Cape Haze, Florida. The intercoastal at sunset.">
-                           </picture>
-                        </li>
-                        <li>
-                            <picture>
-                            <!-- <source srcset="/static/images/images_production/jeff_workout.webp" type="image/webp"> -->
-                            <img src="{{ url_for('static', filename='images/sunset_jeff1.jpg') }}" alt="Jeff Reiher working out at the hammocks gym.">
-                            </picture>
-                        </li>
-                        <li>
-                            <picture>
-                            <!-- <source srcset="/static/images/images_production/rainbow_crop_r.webp" type="image/webp"> -->
-                            <img src="{{ url_for('static', filename='images/purple_i.jpg') }}" alt="Cape Haze, Florida. The intercoastal at sunset.">
-                            </picture>
-                        </li>
-                    </ul>
+                                <li>
+                                    <picture>
+                                    <!-- <source srcset="/static/images/images_production/boat_crop.webp" type="image/webp"> -->
+                                    <img src="{{ url_for('static', filename='images/sunset_jeff1.jpg') }}" alt="Englewood Florda, a historic fishing boat docked at the Fishery bar and grill.">
+                                    </picture>
+                                </li>
+                                <li>
+                                    <picture>
+                                    <!-- <source srcset="/static/images/images_production/jeff_beach_crop.webp" type="image/webp"> -->
+                                    <img src="{{ url_for('static', filename='images/purple_i.jpg') }}" alt="Cape Haze, Florida. The intercoastal at sunset.">
+                                   </picture>
+                                </li>
+                                <li>
+                                    <picture>
+                                    <!-- <source srcset="/static/images/images_production/jeff_workout.webp" type="image/webp"> -->
+                                    <img src="{{ url_for('static', filename='images/sunset_jeff1.jpg') }}" alt="Jeff Reiher working out at the hammocks gym.">
+                                    </picture>
+                                </li>
+                                <li>
+                                    <picture>
+                                    <!-- <source srcset="/static/images/images_production/rainbow_crop_r.webp" type="image/webp"> -->
+                                    <img src="{{ url_for('static', filename='images/purple_i.jpg') }}" alt="Cape Haze, Florida. The intercoastal at sunset.">
+                                    </picture>
+                                </li>
+                            </ul>
+                        </div>
+                        <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
+                        <a href="#" class="jcarousel-control-next">&rsaquo;</a>
+                        <p class="jcarousel-pagination"></p>
+                    </div>
+                </div> <!-- end wrapper -->
+            </div> <!-- end desktop md-8 -->
+            <div class="col-xs-12 col-md-4 pull-right">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                          <th class="h4">Jeff Reiher <span class="small text-uppercase">&nbsp;&nbsp;Web Developer</span></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><b>ht:</b> 5'9" <b>wt:</b> 180</td> 
+                        </tr>
+                        <tr>
+                            <td><b>born:</b> 11-14-1979 Waukegan, IL</td>
+                        </tr>
+                        <tr>
+                            <td><b>Home:</b> Heredia, Costa Rica</td>
+                        </tr>
+                        <tr>
+                            <td><b>Current:</b> Cape Haze, FL.</td>
+                        </tr>
+                        <tr>
+                            <td><b>Programming Languages:</b> Python, JavaScript</td>
+                        </tr>
+                    <tbody>
+                </table>
+            </div> <!-- end col md-4 table -->
+        </div> <!-- end row  -->
+        <hr class="style-eight">
+    </div>
+</div>
+<div class="container">
+    <div class="col-md-12">
+        <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <p class="h3">Technologies I know how to use</p>
+                            <ul >
+                                <li>Python, I am an avid pythonista.</li>
+                                <li>PostgreSQL and mongoDB databases.</li>
+                                <li>Twitter Bootstrap.</li>
+                                <li>Data Science Hobbiest (ie. pandas)</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-                <a href="#" class="jcarousel-control-prev">&lsaquo;</a>
-                <a href="#" class="jcarousel-control-next">&rsaquo;</a>
-                <p class="jcarousel-pagination"></p>
-            </div>
-        </div> <!-- end wrapper -->
-    </div> <!-- end desktop md-8 -->
-    <div class="col-xs-12 col-md-4 pull-right">
-        <table class="table table-striped table-bordered">
-            <thead>
-                <tr>
-                  <th class="h4">Jeff Reiher <span class="small text-uppercase">&nbsp;&nbsp;Web Developer</span></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><b>ht:</b> 5'9" <b>wt:</b> 180</td> 
-                </tr>
-                <tr>
-                    <td><b>born:</b> 11-14-1979 Waukegan, IL</td>
-                </tr>
-                <tr>
-                    <td><b>Home:</b> Heredia, Costa Rica</td>
-                </tr>
-                <tr>
-                    <td><b>Current:</b> Cape Haze, FL.</td>
-                </tr>
-                <tr>
-                    <td><b>Programming Languages:</b> Python, JavaScript</td>
-                </tr>
-            <tbody>
-        </table>
-    </div> <!-- end col md-4 table -->
-</div> <!-- end row  -->
-<hr class="style-eight">
-<div class="row">
-        <div class="col-md-5 col-md-offset-1">
-            <div class="thumbnail">
-                <div class="caption">
-                    <p class="h3">Technologies I know how to use</p>
-                    <ul >
-                        <li>Python, I am an avid pythonista.</li>
-                        <li>PostgreSQL and mongoDB databases.</li>
-                        <li>Twitter Bootstrap.</li>
-                        <li>Data Science Hobbiest (ie. pandas)</li>
-                    </ul>
+                <div class="col-md-5">
+                    <div class="thumbnail">
+                        <div class="caption">
+                            <p class="h3">Projects I plan to work on</p>
+                            <ul>
+                                <li>Python driven web applications.</li>
+                                <li>Modeling data to analyze the stock market.</li>
+                                <li>Modeling data to analyze sports stats.</li>
+                                <li>Any Technology that can help change the world.</li>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <div class="thumbnail">
-                <div class="caption">
-                    <p class="h3">Projects I plan to work on</p>
-                    <ul>
-                        <li>Python driven web applications.</li>
-                        <li>Modeling data to analyze the stock market.</li>
-                        <li>Modeling data to analyze sports stats.</li>
-                        <li>Any Technology that can help change the world.</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-</div><!-- end row info -->
+        </div><!-- end row info -->
+    </div>
+</div>
 
 
 

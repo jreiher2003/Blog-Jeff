@@ -21,79 +21,86 @@
 </head>
 <body>
 
-    <div class="container-fluid">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
         <!-- Static navbar -->
-        <nav class="navbar navbar-default">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                    <a class="navbar-brand" href="{{ url_for('index') }}">Jeff Reiher</a>
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href="/">Home</a></li>
-                        <li><a href="{{ url_for('blog') }}">Blog</a></li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
-                            <ul class="dropdown-menu">
-                                <li><a href="https://github.com/jreiher2003" target="_blank" ><i class="fa fa-github fa-lg social"></i>&nbsp; |&nbsp;  GitHub</a></li>
-                                <li><a href="https://www.linkedin.com/nhome/" target="_blank"><i class="fa fa-linkedin fa-lg social"></i>&nbsp; |&nbsp;  LinkedIn</a></li>
-                                <li><a href="https://twitter.com/BigJeffDogg" target="_blank"><i class="fa fa-twitter fa-lg social"></i>&nbsp; | &nbsp;Twitter</a></li>
-                                <li><a href="https://www.facebook.com/jeff.reiher" target="_blank" ><i class="fa fa-facebook fa-lg social"></i>&nbsp;&nbsp; | &nbsp; Facebook</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                    {% if current_user.is_active %}
-                        <li><a href="{{ url_for('profile', user_id=current_user.id, name=current_user.name) }}">{{ current_user.name }}</a></li>
-                        <li><a href="{{ url_for('logout') }}">Logout</a></li>
-                    {% else %}
-                        <li><a href="{{ url_for('register') }}">Sign Up</a></li>
-                        <li><a href="{{ url_for('login') }}">Login</a></li>
-                    {% endif %}
-                    </ul>
-                </div><!--/.nav-collapse -->
-            </div><!--/.container-fluid nav -->
-        </nav>
-        {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-        <ul class='flashes list-unstyled'>
-            {% for category, message in messages %}
-            <li class="alert alert-{{ category }}" role="alert">{{ message | safe}}</li>
-            {% endfor %}
-        </ul>
-        {% endif %}
-        {% endwith %}
+            <nav class="navbar navbar-default">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a class="navbar-brand" href="{{ url_for('index') }}">Jeff Reiher</a>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="/">Home</a></li>
+                            <li><a href="{{ url_for('blog') }}">Blog</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="https://github.com/jreiher2003" target="_blank" ><i class="fa fa-github fa-lg social"></i>&nbsp; |&nbsp;  GitHub</a></li>
+                                    <li><a href="https://www.linkedin.com/nhome/" target="_blank"><i class="fa fa-linkedin fa-lg social"></i>&nbsp; |&nbsp;  LinkedIn</a></li>
+                                    <li><a href="https://twitter.com/BigJeffDogg" target="_blank"><i class="fa fa-twitter fa-lg social"></i>&nbsp; | &nbsp;Twitter</a></li>
+                                    <li><a href="https://www.facebook.com/jeff.reiher" target="_blank" ><i class="fa fa-facebook fa-lg social"></i>&nbsp;&nbsp; | &nbsp; Facebook</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <ul class="nav navbar-nav navbar-right">
+                        {% if current_user.is_active %}
+                            <li><a href="{{ url_for('profile', user_id=current_user.id, name=current_user.name) }}">{{ current_user.name }}</a></li>
+                            <li><a href="{{ url_for('logout') }}">Logout</a></li>
+                        {% else %}
+                            <li><a href="{{ url_for('register') }}">Sign Up</a></li>
+                            <li><a href="{{ url_for('login') }}">Login</a></li>
+                        {% endif %}
+                        </ul>
+                    </div><!--/.nav-collapse -->
+                </div><!--/.container-fluid nav -->
+            </nav>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            <ul class='flashes list-unstyled'>
+                {% for category, message in messages %}
+                <li class="alert alert-{{ category }}" role="alert">{{ message | safe}}</li>
+                {% endfor %}
+            </ul>
+            {% endif %}
+            {% endwith %}
 
-
-        {%block section %}{% endblock %}
-    </div> <!-- end container-fluid -->
-
-
-    <!-- FOOTER -->
-    <footer>
-        <ul class="social">
-            <li style="padding-left:0px;"><a href="https://github.com/jreiher2003" target="_blank" class="git">GitHub</a></li>
-            <li><a href="https://www.linkedin.com/pub/jeff-reiher/48/9b7/132" target="_blank" class="linkedin">LinkedIn</a></li>
-            <li><a href="https://twitter.com/BigJeffDogg" target="_blank" class="twitter">Twitter</a></li>
-            <li><a href="https://www.facebook.com/jeff.reiher" target="_blank" class="facebook">Facebook</a></li>
-        </ul> 
-        <div class="bottom-footer">
-            <figure>
-                <a href="{{ url_for('index') }}">
-                    <picture>
-                        <img class="foot img-responsive" src="{{ url_for('static', filename='images/jeffreihercom_crop.png') }}" alt="logo of jeffreiher.com">
-                    </picture>
-                </a>
-                <figcaption>&#169;&nbsp;Copyright 2016 DSAC LLC.&nbsp; All Rights Resevered</figcaption>
-            </figure>
         </div>
-    </footer>
+    </div>
+</div> <!-- end container-fluid -->
+{%block section %}{% endblock %}
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+        <!-- FOOTER -->
+        <footer>
+            <ul class="social">
+                <li style="padding-left:0px;"><a href="https://github.com/jreiher2003" target="_blank" class="git">GitHub</a></li>
+                <li><a href="https://www.linkedin.com/pub/jeff-reiher/48/9b7/132" target="_blank" class="linkedin">LinkedIn</a></li>
+                <li><a href="https://twitter.com/BigJeffDogg" target="_blank" class="twitter">Twitter</a></li>
+                <li><a href="https://www.facebook.com/jeff.reiher" target="_blank" class="facebook">Facebook</a></li>
+            </ul> 
+            <div class="bottom-footer">
+                <figure>
+                    <a href="{{ url_for('index') }}">
+                        <picture>
+                            <img class="foot img-responsive" src="{{ url_for('static', filename='images/jeffreihercom_crop.png') }}" alt="logo of jeffreiher.com">
+                        </picture>
+                    </a>
+                    <figcaption>&#169;&nbsp;Copyright 2016 DSAC LLC.&nbsp; All Rights Resevered</figcaption>
+                </figure>
+            </div>
+        </footer>
+        </div>
+    </div>
+</div>
 
 
     <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
