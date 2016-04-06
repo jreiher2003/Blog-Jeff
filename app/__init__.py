@@ -2,6 +2,7 @@ import os
 
 from flask import Flask 
 # from flask_sslify import SSLify 
+from flask.ext.uploads import UploadSet, configure_uploads, IMAGES, UploadNotAllowed
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.bcrypt import Bcrypt 
 from flask.ext.login import LoginManager 
@@ -11,8 +12,9 @@ app = Flask(__name__)
 
 
 app.config.from_object(os.environ['APP_SETTINGS'])
-# print os.environ['APP_SETTINGS']
-# print app.config['POSTS_PER_PAGE']
+
+uploaded_photos = UploadSet('photos', IMAGES)
+configure_uploads(app, uploaded_photos)
 # sslify = SSLify(app)
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
