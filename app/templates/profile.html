@@ -9,6 +9,7 @@ this is profile template
                 <div class="col-md-4">
                     <div class="thumbnail">
                         <img class="img-responsive" src="https://lh3.googleusercontent.com/-1p0-ELNl0mk/AAAAAAAAAAI/AAAAAAAAAAA/xeGC2Eu7i0o/photo.jpg" width="200">
+                        <img class="img-responsive" src="{{ profile.photos.imgsrc }}">
                         <div class="caption">
                             <p><strong>username: </strong>&nbsp;{{ profile.name }}</p>
                             <p><strong>email: </strong>&nbsp;{{ profile.email }}</p>
@@ -21,15 +22,15 @@ this is profile template
                         <form>
                             <div class="form-group">
                                 <label for="username">Username</label>
-                                <input type="text" id="username" class="form-control" placeholder="{{ profile.name }}">
+                                <input type="text" name="username" id="username" class="form-control" placeholder="{{ profile.name }}">
                             </div>
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control">
+                                <input type="email" id="email" name="email" class="form-control">
                             </div>
                             <div class="form-group">
                                 <label for="fileupload">Profile Pic</label>
-                                <input type="file" class="">
+                                <input type="file" id="fileupload" name="photo" class="">
                             </div>
                             <input type='submit'>
                         </form>
