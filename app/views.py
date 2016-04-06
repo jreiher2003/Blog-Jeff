@@ -1,9 +1,10 @@
-from app import app, db # pragma no cover
+from app import app, db, uploaded_photos # pragma no cover
 from flask import render_template, redirect, \
     url_for, request, session, flash # pragma no cover
 from flask.ext.login import login_user, logout_user, login_required, current_user # pragma no cover
+from flask.ext.uploads import UploadSet, configure_uploads, IMAGES, UploadNotAllowed
 from forms import LoginForm, MessageForm, RegisterForm # pragma no cover
-from app.models import User, BlogPost, bcrypt # pragma no cover
+from app.models import User, BlogPost, Photos, bcrypt # pragma no cover
 
 
 @app.route('/')# pragma no cover
@@ -11,11 +12,62 @@ from app.models import User, BlogPost, bcrypt # pragma no cover
 def index():
     return render_template('index.html')
 
-@app.route("/profile/<path:user_id>/<path:name>")
+@app.route("/profile/<path:user_id>/<path:name>", methods=["GET", "POST"])
 def profile(name, user_id):
     profile = User.query.filter_by(id=user_id).one()
+    if request.method == "POST":
+        username = request.form["username"]
+        email = request.form["email"]
+        photo = request.files["photo"]
+        try:
+            filename = uploaded_photos.save(photo)
+        except UploadNotAllowed:
+            flash("The upload was not allowed")
+        else:
+            profile.name = username
+            profile.email = email
+            photo = Photo(filename=filename, user_id=profile.id)
+            db.session.add(profile)
+            db.session.add(photo)
+            db.session.commit()
+            flash("Just updated your profile!")
+            return redirect("index.html")
     return render_template("profile.html", name=name, profile=profile)
 
+@app.route('/show')
+def hello_world():
+    photos = Photos.query.all()
+    return render_template("all_photos.html", photos=photos)
+    
+@app.route('/upload', methods=['GET', 'POST'])
+def upload():
+    if request.method == "POST":
+        photo = request.files["photo"]
+        title = request.form["title"]
+        caption = request.form["caption"]
+        if not (photo and title and caption):
+            flash("You must fill in all the fields")
+        else:
+            try:
+                filename = uploaded_photos.save(photo)
+            except UploadNotAllowed:
+                flash("The upload was not allowed")
+            else:
+                post = Photos(title=title, caption=caption, filename=filename)
+                db.session.add(post)
+                db.session.commit()
+                flash("Post is successful")
+                return redirect(url_for("hello_world"))
+    return render_template('upload.html')
+
+
+@app.route('/photo/<id>')
+def show(id):
+    photo = Photo.load(id)
+    if photo is None:
+        abort(404)
+    url = photos.url(photo.filename)
+    return render_template('show.html', url=url, photo=photo)
 
 @app.route('/blog', methods=['GET', 'POST'])# pragma no cover
 @app.route('/blog/<int:page>', methods=['GET','POST'])# pragma no cover
