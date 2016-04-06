@@ -168,6 +168,13 @@ img.profile {
     border-right-color:#ddd;
     border-width:8px;
 }
+/*#####################################*/
+/*#######    PROFILE PAGE     ########*/
+/*########################################*/
+.profile_background {
+    background-color: grey;
+}
+
 @media screen and (min-width: 991px) {
     body {
         width: 1120px;

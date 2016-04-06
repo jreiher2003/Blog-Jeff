@@ -11,6 +11,11 @@ from app.models import User, BlogPost, bcrypt # pragma no cover
 def index():
     return render_template('index.html')
 
+@app.route("/profile/<path:user_id>/<path:name>")
+def profile(name, user_id):
+    profile = User.query.filter_by(id=user_id).one()
+    return render_template("profile.html", name=name, profile=profile)
+
 
 @app.route('/blog', methods=['GET', 'POST'])# pragma no cover
 @app.route('/blog/<int:page>', methods=['GET','POST'])# pragma no cover
