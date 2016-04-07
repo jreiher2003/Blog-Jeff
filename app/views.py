@@ -100,6 +100,10 @@ def delete_blogpost(author_id, blog_id):
     return render_template('delete-post.html',
                             deletepost=deletepost)
 
+@app.route("/projects")
+def projects():
+    return render_template("projects.html")
+
 
 @app.route('/login', methods=["GET", "POST"])# pragma no cover
 def login():

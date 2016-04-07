@@ -1,7 +1,6 @@
 <!doctype HTML>
 <html lang="en">
 <head>
-    <title>{% block title %}{% endblock %}</title>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +9,8 @@
     <meta name='keywords' content="{% block keywords %}{% endblock %}"/>
     <meta name='copyright' content="DSAC LLC">
     <meta name="robots" content="index,follow">
-    <link rel="shortcut icon" href="https://placehold.it/32x32">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="shortcut icon" type="image/ico" href="{{ url_for('static', filename='images/jwblack21-16_icon.ico') }}">
 
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
@@ -40,6 +40,7 @@
                         <ul class="nav navbar-nav">
                             <li class="active"><a href="/">Home</a></li>
                             <li><a href="{{ url_for('blog') }}">Blog</a></li>
+                            <li><a href="{{ url_for('projects') }}">Projects</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact <span class="caret"></span></a>
                                 <ul class="dropdown-menu">

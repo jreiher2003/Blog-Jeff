@@ -1,11 +1,22 @@
-{% extends "base.html" %}
+{% extends "base1.html" %}
 {% block title %}Projects{% endblock %}
 {% block description %}This is Jeff Reiher Project showcase{% endblock %}
-{% block keywords %}Jeff Reiher, Web developer, projects, python, gae, bootstrap, web apps{% endblock %}
+{% block keywords %}Jeff Reiher, Web developer, projects, python, bootstrap, web apps{% endblock %}
 {% block section %}
 
-<section>
-    <h2>Project section of site</h2>
-</section>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>Project section of site</h2>
+            <ul>
+                <li>Project Name</li>
+                <li><a href="#">link to project</a></li>
+                <li><a href="#">link to github source</a></li>
+                <li>project description</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
 
 {% endblock %}

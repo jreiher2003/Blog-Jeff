@@ -39,6 +39,11 @@ class User(db.Model):
     def imgsrc(self):
         return uploaded_photos.url(self.filename)
 
+    @property 
+    def format_date_join(self):
+        return "Joined on {dt:%B} {dt.day}, {dt.year}".format(dt=self.date_created)
+
+
     def __repr__(self):
         return '<name> {}'.format(self.name)
 

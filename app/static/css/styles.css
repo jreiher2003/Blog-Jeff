@@ -2,6 +2,12 @@ html {
     background-color: #e9eaed;
     font-size: 16px;
 }
+body {
+    background-color: white;
+}
+.container {
+    /*background-color: grey;*/
+}
 /*########## footer ##################*/
 footer {
     background-color: rgba(0,0,0,.9);
