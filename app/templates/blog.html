@@ -34,7 +34,7 @@
                     <div class="blog-post">
                         <div class="row">
                             <div class="col-xs-2 col-md-2">
-                                <img class="profile img-responsive" src="https://lh3.googleusercontent.com/-1p0-ELNl0mk/AAAAAAAAAAI/AAAAAAAAAAA/xeGC2Eu7i0o/photo.jpg">
+                                <img class="profile img-responsive" src="{{ post.users.imgsrc }}">
                             </div>
                             <div class="col-xs-10 col-md-10 ">
                                 <div class="panel panel-default">
@@ -42,7 +42,7 @@
                                         {% if current_user.is_active %}
                                         <div class="pull-right"><a href="{{ url_for('edit_blogpost', author_id=post.author_id,blog_id=post.id) }}">Edit</a>&nbsp;|&nbsp;<a href="{{ url_for('delete_blogpost', author_id=post.author_id,blog_id=post.id) }}">Delete</a></div>
                                         {% endif %}
-                                        <strong>{{ post.author.name }}</strong>&nbsp;&nbsp;
+                                        <strong>{{ post.users.name }}</strong>&nbsp;&nbsp;
                                         <span class="text-muted h6">commented {{ post.format_date }}</span>
                                     </div>
                                     <div class="panel-body">
@@ -73,7 +73,7 @@
                             <h3 class="text-center">Recent Posts:</h3>
                             <ul class="list-unstyled">
                                 {% for post in posts.items %}
-                                <li class="text-capitalize"><a href="{{ url_for('blog_post', blog_id=post.id, blog_title=post.slug) }}">{{ post.title }}</a>&nbsp;<span class="small_rp label label-warning">{{ post.author.name }}</span></li>
+                                <li class="text-capitalize"><a href="{{ url_for('blog_post', blog_id=post.id, blog_title=post.slug) }}">{{ post.title }}</a>&nbsp;<span class="small_rp label label-warning">{{ post.users.name }}</span></li>
                                 <br>
                                 {% endfor %}
                                 <li class="recent__post_hr"></li>
