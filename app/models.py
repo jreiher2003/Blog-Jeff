@@ -14,9 +14,9 @@ class User(db.Model):
     name = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
+    filename = db.Column(db.String)
     date_created  = db.Column(db.DateTime,  default=datetime.datetime.now())
-    posts = db.relationship("BlogPost", backref="author")
-    photos = db.relationship("Photos", backref="user")
+    posts = db.relationship("BlogPost", backref="users")
 
     def __init__(self, name, email, password):
         self.name = name
@@ -35,23 +35,12 @@ class User(db.Model):
     def get_id(self):
         return unicode(self.id)
 
-    def __repr__(self):
-        return '<name> {}'.format(self.name)
-
-class Photos(db.Model):
-
-    __tablename__ = "photos"
-
-    id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String)
-    filename = db.Column(db.String)
-    caption = db.Column(db.String)
-    created = db.Column(db.Date, default=datetime.datetime.now())
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
-
     @property 
     def imgsrc(self):
         return uploaded_photos.url(self.filename)
+
+    def __repr__(self):
+        return '<name> {}'.format(self.name)
 
 class BlogPost(db.Model):
 
