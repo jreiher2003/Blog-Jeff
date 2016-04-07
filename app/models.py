@@ -68,6 +68,10 @@ class BlogPost(db.Model):
         return '{dt:%A} {dt:%B} {dt.day}, {dt.year}'.format(dt=self.date_created)
 
     @property 
+    def format_date_reg(self):
+        return "{dt:%Y-%m-%d}".format(dt=self.date_created)
+
+    @property 
     def format_time(self):
         return '{dt:%I:%M %p}'.format(dt=self.date_created)
 
