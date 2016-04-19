@@ -1,8 +1,9 @@
-from app import app, db, uploaded_photos # pragma no cover
+from app import app, db # pragma no cover
+# from app import uploaded_photos
 from flask import render_template, redirect, \
     url_for, request, session, flash # pragma no cover
 from flask.ext.login import login_user, logout_user, login_required, current_user # pragma no cover
-from flask.ext.uploads import UploadSet, configure_uploads, IMAGES, UploadNotAllowed
+# from flask.ext.uploads import UploadSet, configure_uploads, IMAGES, UploadNotAllowed
 from forms import LoginForm, MessageForm, RegisterForm # pragma no cover
 from app.models import User, BlogPost, bcrypt # pragma no cover
 
@@ -15,24 +16,24 @@ def index():
 
 @app.route("/profile/<path:user_id>/<path:name>", methods=["GET", "POST"])
 def profile(name, user_id):
-    profile = User.query.filter_by(id=user_id).one()
-    if request.method == "POST":
-        username = request.form["username"]
-        email = request.form["email"]
-        photo = request.files["photo"]
-        try:
-            filename = uploaded_photos.save(photo)
-        except UploadNotAllowed:
-            flash("The upload was not allowed")
-        else:
-            profile.name = username
-            profile.email = email
-            profile.filename = filename
-            db.session.add(profile)
+    # profile = User.query.filter_by(id=user_id).one()
+    # if request.method == "POST":
+    #     username = request.form["username"]
+    #     email = request.form["email"]
+    #     photo = request.files["photo"]
+    #     try:
+    #         filename = uploaded_photos.save(photo)
+    #     except UploadNotAllowed:
+    #         flash("The upload was not allowed")
+    #     else:
+    #         profile.name = username
+    #         profile.email = email
+    #         profile.filename = filename
+    #         db.session.add(profile)
             
-            db.session.commit()
-            flash("Just updated your profile!", "info")
-            return redirect(url_for('index'))
+    #         db.session.commit()
+    #         flash("Just updated your profile!", "info")
+    #         return redirect(url_for('index'))
     return render_template("profile.html", name=name, profile=profile)
 
 

@@ -1,6 +1,7 @@
 import datetime 
 
-from app import db, bcrypt, uploaded_photos
+from app import db, bcrypt
+# from app import uploaded_photos
 
 from slugify import slugify
 
