@@ -16,24 +16,23 @@ def index():
 
 @app.route("/profile/<path:user_id>/<path:name>", methods=["GET", "POST"])
 def profile(name, user_id):
-    # profile = User.query.filter_by(id=user_id).one()
-    # if request.method == "POST":
-    #     username = request.form["username"]
-    #     email = request.form["email"]
-    #     photo = request.files["photo"]
-    #     try:
-    #         filename = uploaded_photos.save(photo)
-    #     except UploadNotAllowed:
-    #         flash("The upload was not allowed")
-    #     else:
-    #         profile.name = username
-    #         profile.email = email
-    #         profile.filename = filename
-    #         db.session.add(profile)
-            
-    #         db.session.commit()
-    #         flash("Just updated your profile!", "info")
-    #         return redirect(url_for('index'))
+    profile = User.query.filter_by(id=user_id).one()
+    if request.method == "POST":
+        username = request.form["username"]
+        email = request.form["email"]
+        photo = request.files["photo"]
+        # try:
+        #     filename = uploaded_photos.save(photo)
+        # except UploadNotAllowed:
+        #     flash("The upload was not allowed")
+        # else:
+        profile.name = username
+        profile.email = email
+        profile.filename = filename
+        db.session.add(profile)
+        db.session.commit()
+        flash("Just updated your profile!", "info")
+        return redirect(url_for('index'))
     return render_template("profile.html", name=name, profile=profile)
 
 

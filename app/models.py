@@ -15,7 +15,7 @@ class User(db.Model):
     name = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
-    filename = db.Column(db.String)
+    # filename = db.Column(db.String)
     date_created  = db.Column(db.DateTime,  default=datetime.datetime.now())
     posts = db.relationship("BlogPost", backref="users")
 
@@ -36,9 +36,9 @@ class User(db.Model):
     def get_id(self):
         return unicode(self.id)
 
-    @property 
-    def imgsrc(self):
-        return uploaded_photos.url(self.filename)
+    # @property 
+    # def imgsrc(self):
+    #     return uploaded_photos.url(self.filename)
 
     @property 
     def format_date_join(self):
