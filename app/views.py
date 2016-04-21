@@ -9,10 +9,17 @@ from app.models import User, BlogPost, bcrypt # pragma no cover
 @app.route('/')# pragma no cover
 @app.route('/home')# pragma no cover
 def index():
-    return render_template('index.html')
+    error = None
+    form = LoginForm(request.form)
+    return render_template(
+        'index.html', 
+        form=form,
+        error=error
+        )
 
 
 @app.route("/profile/<path:user_id>/<path:name>", methods=["GET", "POST"])
+@login_required
 def profile(name, user_id):
     profile = User.query.filter_by(id=user_id).one()
     if request.method == "POST":
@@ -40,37 +47,54 @@ def profile(name, user_id):
 @app.route('/blog', methods=['GET', 'POST'])# pragma no cover
 @app.route('/blog/<int:page>', methods=['GET','POST'])# pragma no cover
 def blog(page=1):
+    error = None
+    form = LoginForm(request.form)
     posts = BlogPost.query.order_by(BlogPost.id.desc()).paginate(page,5,False)
-    return render_template('blog.html', 
-                            posts=posts)
+    return render_template(
+        'blog.html', 
+        posts=posts,
+        form=form,
+        error=error
+        )
 
 
 @app.route("/blog/<int:blog_id>/<path:blog_title>/")
 def blog_post(blog_id, blog_title):
+    error = None
+    form = LoginForm(request.form)
     blogpost = db.session.query(BlogPost).filter_by(id=blog_id).one()
-    return render_template('blog-post.html', 
-                            blogpost=blogpost)
+    return render_template(
+        'blog-post.html', 
+        blogpost=blogpost,
+        form=form,
+        error=error
+        )
 
 
 @app.route("/blog/<int:author_id>/newpost/", methods=["GET","POST"])
+@login_required
 def new_blogpost(author_id):
     error = None
     form = MessageForm(request.form)
     if form.validate_on_submit():
-        newpost = BlogPost(title=form.title.data, 
-                           description=form.description.data,
-                           author_id=current_user.id)
+        newpost = BlogPost(
+            title=form.title.data, 
+            description=form.description.data,
+            author_id=current_user.id)
         db.session.add(newpost)
         db.session.commit()
         flash('your post was successful', 'success')
         return redirect(url_for('blog'))
 
-    return render_template('create-post.html', 
-                            form=form, 
-                            error=error)
+    return render_template(
+        'create-post.html', 
+        form=form, 
+        error=error
+        )
 
 
 @app.route("/blog/<int:author_id>/<int:blog_id>/edit/", methods=["GET","POST"])
+@login_required
 def edit_blogpost(author_id, blog_id):
     error = None
     editpost = db.session.query(BlogPost).filter_by(id=blog_id).one()
@@ -83,13 +107,16 @@ def edit_blogpost(author_id, blog_id):
         flash("Post successfully edited", "success")
         return redirect(url_for('blog'))
     
-    return render_template('edit-post.html', 
-                            editpost=editpost, 
-                            form=form, 
-                            error=error)
+    return render_template(
+        'edit-post.html', 
+        editpost=editpost, 
+        form=form, 
+        error=error
+        )
         
 
 @app.route("/blog/<int:author_id>/<int:blog_id>/delete/",methods=["GET","POST"])
+@login_required
 def delete_blogpost(author_id, blog_id):
     deletepost = db.session.query(BlogPost).filter_by(id=blog_id).one()
     if request.method == "POST":
@@ -98,34 +125,43 @@ def delete_blogpost(author_id, blog_id):
         flash("Post Deleted", "danger")
         return redirect(url_for('blog'))
 
-    return render_template('delete-post.html',
-                            deletepost=deletepost)
+    return render_template(
+        'delete-post.html',
+        deletepost=deletepost
+        )
 
 @app.route("/projects")
 def projects():
-    return render_template("projects.html")
+    error = None
+    form = LoginForm(request.form)
+    return render_template(
+        "projects.html",
+        form=form,
+        error=error
+        )
 
 
-@app.route('/login', methods=["GET", "POST"])# pragma no cover
+@app.route('/login', methods=["POST"])# pragma no cover
 def login():
     error = None
     form = LoginForm(request.form)
     if form.validate_on_submit():
-        user = User.query.filter_by(name=request.form['username']).first()
+        user = User.query.filter_by(name=form.username.data).first()
         if user is not None and bcrypt.check_password_hash(
                                 user.password, 
-                                request.form['password']):
+                                form.password.data):
             remember_me = form.remember_me.data
-            login_user(user,remember_me)
+            login_user(user, remember_me)
             flash("You Were Signin in. Yea!", 'success')
-            return redirect(url_for('blog'))
+            referer = request.headers["Referer"]
+            return redirect(referer)
         else:
             flash("<strong>Invalid Credentials.</strong> Please try again.", "danger")
-            return redirect(url_for('login'))
-
-    return render_template("login.html", 
-                            form=form, 
-                            error=error)    
+            return redirect(url_for('index'))
+    referer = request.headers["Referer"]
+    return redirect(
+        referer
+        )    
 
 
 @app.route('/logout')# pragma no cover
@@ -154,7 +190,10 @@ def register():
         login_user(user)
         flash("Congrats on your new account!", "success")
         return redirect(url_for("blog"))
-    return render_template("register.html", form=form, error=error)
+    return render_template(
+        "register.html", 
+        form=form, 
+        error=error)
 
 
 ##################################################################
