@@ -15,7 +15,7 @@ class User(db.Model):
     name = db.Column(db.String, nullable=False)
     email = db.Column(db.String, nullable=False)
     password = db.Column(db.String, nullable=False)
-    # filename = db.Column(db.String)
+    avatar_url = db.Column(db.String)
     date_created  = db.Column(db.DateTime,  default=datetime.datetime.now())
     posts = db.relationship("BlogPost", backref="users")
 
