@@ -1,8 +1,6 @@
 import os
 
 from flask import Flask 
-# from flask_sslify import SSLify 
-# from flask.ext.uploads import UploadSet, configure_uploads, IMAGES, UploadNotAllowed
 from flask.ext.sqlalchemy import SQLAlchemy
 from flask.ext.bcrypt import Bcrypt 
 from flask.ext.login import LoginManager 
@@ -10,17 +8,12 @@ from flask.ext.login import LoginManager
 
 app = Flask(__name__)
 
-
 app.config.from_object(os.environ['APP_SETTINGS'])
 
-# uploaded_photos = UploadSet('photos', IMAGES)
-# configure_uploads(app, uploaded_photos)
-# sslify = SSLify(app)
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
-
 
 from app import views
 from models import *
