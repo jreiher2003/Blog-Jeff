@@ -1,10 +1,6 @@
 import datetime 
-
 from app import db, bcrypt
-# from app import uploaded_photos
-
 from slugify import slugify
-
 
 
 class User(db.Model):
@@ -36,14 +32,9 @@ class User(db.Model):
     def get_id(self):
         return unicode(self.id)
 
-    # @property 
-    # def imgsrc(self):
-    #     return uploaded_photos.url(self.filename)
-
     @property 
     def format_date_join(self):
         return "Joined on {dt:%B} {dt.day}, {dt.year}".format(dt=self.date_created)
-
 
     def __repr__(self):
         return '<name> {}'.format(self.name)
