@@ -8,14 +8,15 @@
             <div class="row">
                 <div class="col-md-4">
                     <div class="thumbnail">
-                        <input type="file" id="file_input"/>
-                        <p id="status">Please select a file</p>
+                        <div class="caption">
+                            <input type="file" id="file_input"/>
+                            <p id="status">Please select a file</p>
+                        </div>
                         {% if profile.avatar_url %}
                             <img class="img-responsive" id="preview" src="{{ profile.avatar_url }}" width="200">
                         {% else %}
                             <img class="img-responsive" id="preview" src="{{ url_for('static', filename='images/profile_pic.jpg') }}" width="200">
                         {% endif %}
-
                         <hr>
                         <div class="caption">
                             <p><strong><span class="glyphicon glyphicon-user" aria-hidden="true"></span>&nbsp;</strong>&nbsp;{{ profile.name }}</p>
