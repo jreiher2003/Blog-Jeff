@@ -1,9 +1,7 @@
 from app import app, db # pragma no cover
-# from app import uploaded_photos
 from flask import render_template, redirect, \
     url_for, request, session, flash # pragma no cover
 from flask.ext.login import login_user, logout_user, login_required, current_user # pragma no cover
-# from flask.ext.uploads import UploadSet, configure_uploads, IMAGES, UploadNotAllowed
 from forms import LoginForm, MessageForm, RegisterForm # pragma no cover
 from app.models import User, BlogPost, bcrypt # pragma no cover
 
@@ -20,20 +18,23 @@ def profile(name, user_id):
     if request.method == "POST":
         username = request.form["username"]
         email = request.form["email"]
-        photo = request.files["photo"]
-        # try:
-        #     filename = uploaded_photos.save(photo)
-        # except UploadNotAllowed:
-        #     flash("The upload was not allowed")
-        # else:
+        avatar_url = request.form["avatar_url"]
         profile.name = username
         profile.email = email
-        profile.filename = filename
+        profile.avatar_url = avatar_url
         db.session.add(profile)
         db.session.commit()
         flash("Just updated your profile!", "info")
-        return redirect(url_for('index'))
-    return render_template("profile.html", name=name, profile=profile)
+        return redirect(url_for(
+            'profile', 
+            name=name, 
+            user_id=user_id)
+        )
+    return render_template(
+        "profile.html", 
+        name=name, 
+        profile=profile
+        )
 
 
 @app.route('/blog', methods=['GET', 'POST'])# pragma no cover
@@ -154,3 +155,31 @@ def register():
         return redirect(url_for("blog"))
     return render_template("register.html", form=form, error=error)
 
+
+##################################################################
+###############  AWS s3  #########################################
+##################################################################
+import time, os, json, base64, hmac, urllib
+from hashlib import sha1
+
+@app.route('/sign_s3/')
+def sign_s3():
+    # Collect information on the file from the GET parameters of the request:
+    object_name = urllib.quote_plus(request.args.get('file_name'))
+    mime_type = request.args.get('file_type')
+    # Set the expiry time of the signature (in seconds) and declare the permissions of the file to be uploaded
+    expires = int(time.time()+60*60*24)
+    amz_headers = "x-amz-acl:public-read"
+    # Generate the StringToSign:
+    string_to_sign = "PUT\n\n%s\n%d\n%s\n/%s/%s" % (mime_type, expires, amz_headers, os.environ["S3_BUCKET"], object_name)
+    # Generate the signature with which the StringToSign can be signed:
+    signature = base64.encodestring(hmac.new(os.environ["AWS_SECRET_KEY"], string_to_sign.encode('utf8'), sha1).digest())
+    # Remove surrounding whitespace and quote special characters:
+    signature = urllib.quote_plus(signature.strip())
+    # Build the URL of the file in anticipation of its imminent upload:
+    url = 'https://%s.s3.amazonaws.com/%s' % (os.environ["S3_BUCKET"], object_name)
+    content = json.dumps({
+        'signed_request': '%s?AWSAccessKeyId=%s&Expires=%s&Signature=%s' % (url, os.environ["AWS_ACCESS_KEY"], expires, signature),
+        'url': url,
+    })
+    return content
