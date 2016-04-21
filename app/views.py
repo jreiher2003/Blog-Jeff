@@ -134,7 +134,8 @@ def logout():
     logout_user()
     session.pop('logged_in', None)
     flash('You were logged out.', 'warning')
-    return redirect(url_for('index'))
+    referer = request.headers["Referer"]
+    return redirect(referer)
 
 
 @app.route("/register", methods=["GET","POST"])# pragma no cover
