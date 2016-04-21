@@ -16,6 +16,7 @@ class TestConfig(BaseConfig):
     MAIL_SUPPRESS_SEND = False
     WTF_CSRF_ENABLED = False
     SQLALCHEMY_DATABASE_URI = 'sqlite:///:memory:'
+    PRESERVE_CONTEXT_ON_EXCEPTION = False
 
 
 class DevelopmentConfig(BaseConfig):
