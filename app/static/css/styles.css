@@ -122,7 +122,8 @@ li.recent__post_hr {
 
 /*############## blog-post page ###########################*/
 img.profile {
-    width: 75px;
+    max-width: 75px;
+    max-height: 75px;
     border:  1px solid rgba(175,175,175,1);
     margin-top: 8px;
 }
