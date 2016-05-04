@@ -83,13 +83,16 @@ figcaption {
     display: block;
     margin-left: auto;
     margin-right: auto;
-    border: 2px solid rgba(0,0,0,1);
+    border: 1px solid rgba(220,220,220,1);
 }
-hr.style-eight {
-    height: 12px;
-    border: 0;
-    box-shadow: inset 0 2px 2px -2px rgba(0, 0, 0, 0.5);
+tbody, thead {
+    font-size: 18px;
 }
+li {
+    font-size: 20px;
+}
+
+
 /*########## blog page #####################*/
 .blog__head {
     background-color: rgba(75,75,75,1);
