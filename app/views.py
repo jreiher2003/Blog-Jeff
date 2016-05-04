@@ -1,3 +1,5 @@
+import json
+import requests
 from app import app, db # pragma no cover
 from flask import render_template, redirect, \
     url_for, request, session, flash # pragma no cover
@@ -134,10 +136,19 @@ def delete_blogpost(author_id, blog_id):
 def projects():
     error = None
     form = LoginForm(request.form)
+    headers = {"Content-Type": "application/json", "User-Agent": "jreiher2003"}
+    puppy = requests.get("https://api.github.com/repos/jreiher2003/Puppy-Adoption", headers=headers).json()
+    portfolio = requests.get("https://api.github.com/repos/jreiher2003/Jeff-Portfolio", headers=headers).json()
+    wiki = requests.get("https://api.github.com/repos/jreiher2003/Wiki", headers=headers).json()
+    composite = requests.get("https://api.github.com/repos/jreiher2003/Composite", headers=headers).json()
     return render_template(
         "projects.html",
         form=form,
-        error=error
+        error=error,
+        puppy=puppy,
+        portfolio=portfolio,
+        wiki=wiki,
+        composite=composite
         )
 
 

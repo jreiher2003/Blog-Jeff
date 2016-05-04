@@ -7,13 +7,68 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <h2>Project section of site</h2>
-            <ul>
-                <li>Project Name</li>
-                <li><a href="#">link to project</a></li>
-                <li><a href="#">link to github source</a></li>
-                <li>project description</li>
-            </ul>
+            <h2 class="text-center">Project section of site</h2>
+            <hr>
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="thumbnail">
+                        <a href="{{ puppy.homepage }}" target="_blank"><img src="http://api.thumbalizr.com/?url={{ puppy.homepage }}&width=350"></a>
+                        <hr>
+                        <div class="caption">
+                            <ul class="list-unstyled">
+                                <li><h2>{{ puppy.name }}</h2></li>
+                                <li>source:  <a href="{{ puppy.html_url }}" target="_blank">Link to github source</a></li>
+                                <li>website: <a href="{{ puppy.homepage }}" target="_blank">{{ puppy.homepage }}</a></li>
+                                <li>description:  {{ puppy.description }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="thumbnail">
+                        <a href="{{ wiki.homepage }}" target="_blank"><img src="http://api.thumbalizr.com/?url={{ wiki.homepage }}&width=350"></a>
+                        <hr>
+                        <div class="caption">
+                            <ul class="list-unstyled">
+                                <li>name:  {{ wiki.name }}</li>
+                                <li>source:  <a href="{{ wiki.html_url }}" target="_blank">Link to github source</a></li>
+                                <li>website: <a href="{{ wiki.homepage }}" target="_blank">{{ wiki.homepage }}</a></li>
+                                <li>description:  {{ wiki.description }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="thumbnail">
+                        <a href="{{ composite.homepage }}" target="_blank"><img src="http://api.thumbalizr.com/?url={{ composite.homepage }}&width=350"></a>
+                        <hr>
+                        <div class="caption">
+                            <ul class="list-unstyled">
+                                <li>name:  {{ composite.name }}</li>
+                                <li>source:  <a href="{{ composite.html_url }}" target="_blank">Link to github source</a></li>
+                                <li>website: <a href="{{ composite.homepage }}" target="_blank">{{ composite.homepage }}</a></li>
+                                <li>description:  {{ composite.description }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-5 col-md-offset-1">
+                    <div class="thumbnail">
+                        <a href="{{ portfolio.homepage }}" target="_blank"><img src="http://api.thumbalizr.com/?url={{ portfolio.homepage }}&width=350"></a>
+                        <hr>
+                        <div class="caption">
+                            <ul class="list-unstyled">
+                                <li>name:  {{ portfolio.name }}</li>
+                                <li>source:  <a href="{{ portfolio.html_url }}" target="_blank">Link to github source</a></li>
+                                <li>website: <a href="{{ portfolio.homepage }}" target="_blank">{{ portfolio.homepage }}</a></li>
+                                <li>description:  {{ portfolio.description }}</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
