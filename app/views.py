@@ -168,7 +168,8 @@ def login():
             return redirect(referer)
         else:
             flash("<strong>Invalid Credentials.</strong> Please try again.", "danger")
-            return redirect(url_for('index'))
+            referer = request.headers["Referer"]
+            return redirect(referer)
     referer = request.headers["Referer"]
     return redirect(
         referer
