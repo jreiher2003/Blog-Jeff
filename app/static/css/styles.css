@@ -8,7 +8,7 @@ body {
 
 /*########## footer ##################*/
 footer {
-    background-color: rgba(0,0,0,.9);
+    background-color: rgba(0,0,0,1);
     border-radius: 2px;
     height: 100%;
 }
@@ -64,7 +64,7 @@ ul.social li {
 .bottom-footer {
     width: 100%;
     text-align: center;
-    padding: 5px;
+    padding: 75px 0 75px 0;
 }
 img.foot {
     width: 200px;
