@@ -189,6 +189,13 @@ img.profile {
     background-color: grey;
 }
 
+/*#####################################*/
+/*#######    PROJECTS PAGE     ########*/
+/*########################################*/
+.img-bor {
+    border: 1px solid #eee;
+}
+
 @media screen and (max-width: 991px) {
     .recent__post {
     text-align: center;
