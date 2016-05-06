@@ -136,6 +136,8 @@ def delete_blogpost(author_id, blog_id):
 def projects():
     error = None
     form = LoginForm(request.form)
+    thumb_key = os.environ["THUMBALIZR_KEY"]
+    
     headers = {"Content-Type": "application/json", "User-Agent": "jreiher2003"}
     puppy = requests.get("https://api.github.com/repos/jreiher2003/Puppy-Adoption", headers=headers).json()
     portfolio = requests.get("https://api.github.com/repos/jreiher2003/Jeff-Portfolio", headers=headers).json()
@@ -148,7 +150,8 @@ def projects():
         puppy=puppy,
         portfolio=portfolio,
         wiki=wiki,
-        composite=composite
+        composite=composite,
+        thumb_key=thumb_key
         )
 
 
