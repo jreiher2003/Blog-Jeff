@@ -1,7 +1,7 @@
-## My portfolio site 
+## My blog site 
 [![Build Status](https://travis-ci.org/jreiher2003/Jeff-Portfolio.svg?branch=master)](https://travis-ci.org/jreiher2003/Jeff-Portfolio)
 
-This site was put together to allow me to practice new web development techniques and show potential employers or clients my portfolio.  
+This site was put together to allow me to practice new web development techniques.  
 
 ### Tech Stack 
 * Python27

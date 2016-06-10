@@ -8,16 +8,16 @@ from forms import LoginForm, MessageForm, RegisterForm # pragma no cover
 from app.models import User, BlogPost, bcrypt # pragma no cover
 
 
-@app.route('/')# pragma no cover
-@app.route('/home')# pragma no cover
-def index():
-    error = None
-    form = LoginForm(request.form)
-    return render_template(
-        'index.html', 
-        form=form,
-        error=error
-        )
+# @app.route('/')# pragma no cover
+# @app.route('/home')# pragma no cover
+# def index():
+#     error = None
+#     form = LoginForm(request.form)
+#     return render_template(
+#         'index.html', 
+#         form=form,
+#         error=error
+#         )
 
 
 @app.route("/profile/<path:user_id>/<path:name>", methods=["GET", "POST"])
@@ -45,7 +45,8 @@ def profile(name, user_id):
         profile=profile
         )
 
-
+@app.route('/')# pragma no cover
+# @app.route('/home')# pragma no cover
 @app.route('/blog', methods=['GET', 'POST'])# pragma no cover
 @app.route('/blog/<int:page>', methods=['GET','POST'])# pragma no cover
 def blog(page=1):
@@ -132,24 +133,24 @@ def delete_blogpost(author_id, blog_id):
         deletepost=deletepost
         )
 
-@app.route("/projects")
-def projects():
-    error = None
-    form = LoginForm(request.form)
-    headers = {"Content-Type": "application/json", "User-Agent": "jreiher2003"}
-    puppy = requests.get("https://api.github.com/repos/jreiher2003/Puppy-Adoption", headers=headers).json()
-    portfolio = requests.get("https://api.github.com/repos/jreiher2003/Jeff-Portfolio", headers=headers).json()
-    wiki = requests.get("https://api.github.com/repos/jreiher2003/Wiki", headers=headers).json()
-    composite = requests.get("https://api.github.com/repos/jreiher2003/Composite", headers=headers).json()
-    return render_template(
-        "projects.html",
-        form=form,
-        error=error,
-        puppy=puppy,
-        portfolio=portfolio,
-        wiki=wiki,
-        composite=composite
-        )
+# @app.route("/projects")
+# def projects():
+#     error = None
+#     form = LoginForm(request.form)
+#     headers = {"Content-Type": "application/json", "User-Agent": "jreiher2003"}
+#     puppy = requests.get("https://api.github.com/repos/jreiher2003/Puppy-Adoption", headers=headers).json()
+#     portfolio = requests.get("https://api.github.com/repos/jreiher2003/Jeff-Portfolio", headers=headers).json()
+#     wiki = requests.get("https://api.github.com/repos/jreiher2003/Wiki", headers=headers).json()
+#     composite = requests.get("https://api.github.com/repos/jreiher2003/Composite", headers=headers).json()
+#     return render_template(
+#         "projects.html",
+#         form=form,
+#         error=error,
+#         puppy=puppy,
+#         portfolio=portfolio,
+#         wiki=wiki,
+#         composite=composite
+#         )
 
 
 @app.route('/login', methods=["POST"])# pragma no cover

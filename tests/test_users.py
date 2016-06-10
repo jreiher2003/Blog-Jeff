@@ -17,9 +17,9 @@ class TestLogin(BaseTestCase):
     #     self.assertIn(b'You Were Signin in. Yea!', response.data)
 
      # Ensure login behaves correctly with incorrect credentials
-    def test_incorrect_login(self):
-        response = self.client.post('/login', data=dict(username="wrong", password="wrong"), follow_redirects=True)
-        self.assertIn(b'<strong>Invalid Credentials.</strong> Please try again.', response.data)
+    # def test_incorrect_login(self):
+    #     response = self.client.post('/login', data=dict(username="wrong", password="wrong"), follow_redirects=True)
+    #     self.assertIn(b'<strong>Invalid Credentials.</strong> Please try again.', response.data)
 
      # # Ensure logout behaves correctly
     # def test_logout(self):
