@@ -8,6 +8,8 @@ class BaseConfig(object):
     AWS_ACCESS_KEY = os.environ["AWS_ACCESS_KEY"]
     AWS_SECRET_KEY = os.environ["AWS_SECRET_KEY"]
     S3_BUCKET = os.environ["S3_BUCKET"]
+    GITHUB_CLIENT_ID =  '721dd238de2fcce2c694'
+    GITHUB_CLIENT_SECRET = 'f11d22868ba413b43ce2975b5019abe6df2580c8'
 
 
 class TestConfig(BaseConfig):

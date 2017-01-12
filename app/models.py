@@ -5,32 +5,16 @@ from slugify import slugify
 
 class User(db.Model):
 
-    __tablename__ = "users"
+    __tablename__ = 'users'
 
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String, nullable=False)
-    email = db.Column(db.String, nullable=False)
-    password = db.Column(db.String, nullable=False)
-    avatar_url = db.Column(db.String)
+    username = db.Column(db.String(200))
+    github_access_token = db.Column(db.String(200))
     date_created  = db.Column(db.DateTime,  default=datetime.datetime.now())
     posts = db.relationship("BlogPost", backref="users")
 
-    def __init__(self, name, email, password):
-        self.name = name
-        self.email = email
-        self.password = bcrypt.generate_password_hash(password)
-
-    def is_authenticated(self):
-        return True
-
-    def is_active(self):
-        return True
-
-    def is_anonymous(self):
-        return False
-
-    def get_id(self):
-        return unicode(self.id)
+    def __init__(self, github_access_token):
+        self.github_access_token = github_access_token
 
     @property 
     def format_date_join(self):
@@ -48,18 +32,17 @@ class BlogPost(db.Model):
     description = db.Column(db.String, nullable=False)
     author_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     date_created  = db.Column(db.DateTime,  default=datetime.datetime.now())
-    date_modified = db.Column(db.DateTime,  default=datetime.datetime.now(),
-                                       onupdate=datetime.datetime.now())
+    date_modified = db.Column(db.DateTime,  default=datetime.datetime.now(), onupdate=datetime.datetime.now())
 
     def __init__(self, title, description, author_id):
         self.title = title
         self.description = description
         self.author_id = author_id
-        
+
     @property 
     def slug(self):
         return slugify(self.title)
-    
+
     @property 
     def format_date(self):
         return '{dt:%A} {dt:%B} {dt.day}, {dt.year}'.format(dt=self.date_created)

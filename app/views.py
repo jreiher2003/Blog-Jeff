@@ -1,11 +1,12 @@
 import json
 import requests
-from app import app, db # pragma no cover
+from app import app, db, github # pragma no cover
 from flask import render_template, redirect, \
-    url_for, request, session, flash # pragma no cover
+    url_for, request, session, flash, g # pragma no cover
 from flask.ext.login import login_user, logout_user, login_required, current_user # pragma no cover
 from forms import LoginForm, MessageForm, RegisterForm # pragma no cover
 from app.models import User, BlogPost, bcrypt # pragma no cover
+
 
 
 @app.route('/')# pragma no cover
@@ -118,40 +119,90 @@ def delete_blogpost(author_id, blog_id):
         deletepost=deletepost
         )
 
+@app.before_request
+def before_request():
+    g.user = None
+    if 'user_id' in session:
+        g.user = User.query.get(session['user_id'])
 
-@app.route('/login', methods=["GET","POST"])# pragma no cover
+@app.after_request
+def after_request(response):
+    db.session.remove()
+    return response
+
+@github.access_token_getter
+def token_getter():
+    user = g.user
+    if user is not None:
+        return user.github_access_token
+
+@app.route('/github-callback')
+@github.authorized_handler
+def authorized(access_token):
+    next_url = request.args.get('next') or url_for('blog')
+    if access_token is None:
+        return redirect(next_url)
+
+    user = User.query.filter_by(github_access_token=access_token).first()
+    if user is None:
+        user = User(github_access_token=access_token)
+        db.session.add(user)
+    user.github_access_token = access_token
+    db.session.commit()
+
+    session['user_id'] = user.id
+    return render_template("blog.html", session=session)
+
+@app.route('/login')
 def login():
-    error = None
-    form = LoginForm(request.form)
-    if form.validate_on_submit():
-        user = User.query.filter_by(name=form.username.data).first()
-        if user is not None and bcrypt.check_password_hash(
-            user.password, 
-            form.password.data):
-            remember_me = form.remember_me.data
-            login_user(user, remember_me)
-            flash("You Were Signin in. Yea!", 'success')
-            referer = request.headers["Referer"]
-            return redirect(referer)
-        else:
-            flash("<strong>Invalid Credentials.</strong> Please try again.", "danger")
-            referer = request.headers["Referer"]
-            return redirect(referer)
-    return render_template(
-        "login.html",
-        form=form,
-        error=None
-        )    
+    if session.get('user_id', None) is None:
+        return github.authorize()
+    else:
+        return 'Already logged in'
 
 
-@app.route('/logout')# pragma no cover
-@login_required
+@app.route('/logout')
 def logout():
-    logout_user()
-    session.pop('logged_in', None)
-    flash('You were logged out.', 'warning')
-    referer = request.headers["Referer"]
-    return redirect(referer)
+    session.pop('user_id', None)
+    return redirect(url_for('blog'))
+
+@app.route('/user')
+def user():
+    return str(github.get('user'))
+
+# @app.route('/login', methods=["GET","POST"])# pragma no cover
+# def login():
+#     error = None
+#     form = LoginForm(request.form)
+#     if form.validate_on_submit():
+#         user = User.query.filter_by(name=form.username.data).first()
+#         if user is not None and bcrypt.check_password_hash(
+#             user.password, 
+#             form.password.data):
+#             remember_me = form.remember_me.data
+#             login_user(user, remember_me)
+#             flash("You Were Signin in. Yea!", 'success')
+#             referer = request.headers["Referer"]
+#             return redirect(referer)
+#         else:
+#             flash("<strong>Invalid Credentials.</strong> Please try again.", "danger")
+#             referer = request.headers["Referer"]
+#             return redirect(referer)
+#     return render_template(
+#         "login.html",
+#         form=form,
+#         error=None
+#         )    
+
+
+# @app.route('/logout')# pragma no cover
+# @login_required
+# def logout():
+#     logout_user()
+#     session.pop('logged_in', None)
+#     flash('You were logged out.', 'warning')
+#     referer = request.headers["Referer"]
+#     return redirect(referer)
 
 
 @app.route("/register", methods=["GET","POST"])# pragma no cover

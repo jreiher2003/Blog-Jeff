@@ -1,9 +1,10 @@
 import os
 
 from flask import Flask 
-from flask.ext.sqlalchemy import SQLAlchemy
-from flask.ext.bcrypt import Bcrypt 
-from flask.ext.login import LoginManager 
+from flask_sqlalchemy import SQLAlchemy
+from flask_bcrypt import Bcrypt 
+from flask_login import LoginManager 
+from flask_github import GitHub 
 
 
 app = Flask(__name__)
@@ -12,6 +13,7 @@ app.config.from_object(os.environ['APP_SETTINGS'])
 
 db = SQLAlchemy(app)
 bcrypt = Bcrypt(app)
+github = GitHub(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 
