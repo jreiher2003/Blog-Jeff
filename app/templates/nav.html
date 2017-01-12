@@ -1,0 +1,79 @@
+<!-- Static navbar -->
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{{ url_for('blog') }}"><img class="img-responsive" src="{{ url_for('static', filename='images/jeffreihercom_crop.png') }}" alt="logo of jeffreiher.com"></a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav navbar-right">
+        {% if current_user.is_active %}
+        <li><a href="{{ url_for('profile', user_id=current_user.id, name=current_user.name) }}">{{ current_user.name }}</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+        {% else %}
+        <li><p class="navbar-text">Already have an account?</p></li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><b>Login</b> <span class="caret"></span></a>
+          <ul id="login-dp" class="dropdown-menu">
+            <li>
+             <div class="row">
+              <div class="col-md-12">
+                    <!-- Login via
+                    <div class="social-buttons">
+                        <a href="#" class="btn btn-fb"><i class="fa fa-facebook"></i> Facebook</a>
+                        <a href="#" class="btn btn-tw"><i class="fa fa-twitter"></i> Twitter</a>
+                    </div>
+                    or -->
+                    <form class="form" role="form" method="post" action="/login" accept-charset="UTF-8" id="login-nav">
+                      {{ form.csrf_token }}
+                      <div class="form-group">
+                       <!-- <label class="sr-only" for="exampleInputEmail2">Username</label> -->
+                       {{ form.username.label(for="inputUsername", class="sr-only") }}
+                       {{ form.username(placeholder="username", type="text", id="inputUsername", class="form-control") }}
+                       <!-- <input type="text" class="form-control" id="exampleInputEmail2" placeholder="Username" required> -->
+                       {% if form.username.errors %}
+                       {% for error in form.username.errors %}
+                       <div class="bg-danger">{{ error }}</div>
+                       {% endfor %}
+                       {% endif %}
+                     </div>
+                     <div class="form-group">
+                       <!-- <label class="sr-only" for="exampleInputPassword2">Password</label> -->
+                       {{ form.password.label(for="inputPassword", class="sr-only") }}
+                       {{ form.password(placeholder="password", type="password", id="inputPassword", class="form-control") }}
+                       <!-- <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required> -->
+                       {% if form.password.errors %}
+                       {% for error in form.password.errors %}
+                       <div class="bg-danger">{{ error }}</div>
+                       {% endfor %}
+                       {% endif %}
+                       <!-- <div class="help-block text-right"><a href="">Forget the password ?</a></div> -->
+                     </div>
+                     <div class="form-group">
+                       <!-- <button type="submit" class="btn btn-primary btn-block">Sign in</button> -->
+                       {{ form.submit(class="btn btn-primary") }}
+                     </div>
+                     <div class="checkbox">
+                       <label>
+                         {{ form.remember_me }} keep me logged-in
+                       </label>
+                     </div>
+                   </form>
+                 </div>
+                 <div class="bottom text-center">
+                  New here ? <a href="{{ url_for('register') }}"><b>Join Us</b></a>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+        {% endif %}
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container-fluid nav -->
+</nav>

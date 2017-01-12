@@ -1,3 +1,14 @@
+#navbar, body > nav > div > div.navbar-header {
+    background-color: black;
+}
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: .05px;
+  width: auto;
+}
 #login-dp{
     min-width: 250px;
     padding: 14px 14px 0;

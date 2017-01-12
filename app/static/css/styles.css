@@ -5,7 +5,6 @@ html {
 body {
     background-color: white;
 }
-
 /*########## footer ##################*/
 footer {
     background-color: rgba(0,0,0,1);
@@ -77,27 +76,6 @@ figure {
 figcaption {
     color: rgba(175,175,175,1);
 }
-/*##### front page index page  #######*/
-.jcarousel ul li img {
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-    border: 1px solid rgba(220,220,220,1);
-}
-tbody {
-    font-size: 17px;
-}
-.table-bordered>thead>tr>th {
-    padding: 15px 8px;
-}
-.table>tbody>tr>td {
-    padding: 13px 0 13px 10px;
-}
-.biggerli {
-    font-size: 18px;
-}
-
-
 /*########## blog page #####################*/
 .blog__head {
     background-color: rgba(75,75,75,1);
@@ -189,24 +167,3 @@ img.profile {
     background-color: grey;
 }
 
-/*#####################################*/
-/*#######    PROJECTS PAGE     ########*/
-/*########################################*/
-.img-bor {
-    border: 1px solid #eee;
-}
-
-@media screen and (max-width: 991px) {
-    .recent__post {
-    text-align: center;
-    }
-    tbody, thead {
-    font-size: 16px;
-    }
-    .biggerli {
-        font-size: 16px;
-    }
-    .smallerh2 {
-        font-size: 18px;
-        font-weight: bold;
-    }
