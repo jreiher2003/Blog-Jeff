@@ -166,4 +166,9 @@ img.profile {
 .profile_background {
     background-color: grey;
 }
-
+@media screen and (max-width: 568px) {
+    img.profile {
+        max-width: 30px;
+        max-height: 30px;
+    }
+}
