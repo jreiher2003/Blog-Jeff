@@ -7,5 +7,5 @@ This site was put together to allow me to practice new web development technique
 * Python27
 * Flask
 * PostgreSQL
-* Heroku 
+* Amazon EC2 instance  
 * Amazon AWS S3 Storage 

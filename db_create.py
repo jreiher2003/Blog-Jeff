@@ -5,6 +5,7 @@ from app.models import BlogPost, User
 
 # create the database and the db table
 db.create_all()
+print "create db"
 # db.session.add(User("admin", "ad@min.com", "admin"))
 
 # db.session.add(BlogPost("Good", "I\'m good.",1))

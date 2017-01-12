@@ -75,7 +75,6 @@ def new_blogpost(author_id):
         db.session.commit()
         flash('your post was successful', 'success')
         return redirect(url_for('blog'))
-
     return render_template(
         'create-post.html', 
         form=form, 
@@ -96,14 +95,13 @@ def edit_blogpost(author_id, blog_id):
         db.session.commit()
         flash("Post successfully edited", "success")
         return redirect(url_for('blog'))
-    
     return render_template(
         'edit-post.html', 
         editpost=editpost, 
         form=form, 
         error=error
         )
-        
+
 
 @app.route("/blog/<int:author_id>/<int:blog_id>/delete/",methods=["GET","POST"])
 @login_required
@@ -121,15 +119,15 @@ def delete_blogpost(author_id, blog_id):
         )
 
 
-@app.route('/login', methods=["POST"])# pragma no cover
+@app.route('/login', methods=["GET","POST"])# pragma no cover
 def login():
     error = None
     form = LoginForm(request.form)
     if form.validate_on_submit():
         user = User.query.filter_by(name=form.username.data).first()
         if user is not None and bcrypt.check_password_hash(
-                                user.password, 
-                                form.password.data):
+            user.password, 
+            form.password.data):
             remember_me = form.remember_me.data
             login_user(user, remember_me)
             flash("You Were Signin in. Yea!", 'success')
@@ -139,9 +137,10 @@ def login():
             flash("<strong>Invalid Credentials.</strong> Please try again.", "danger")
             referer = request.headers["Referer"]
             return redirect(referer)
-    referer = request.headers["Referer"]
-    return redirect(
-        referer
+    return render_template(
+        "login.html",
+        form=form,
+        error=None
         )    
 
 
@@ -164,7 +163,7 @@ def register():
             name=form.username.data,
             email=form.email.data,
             password=form.password.data
-        )
+            )
         user.filename = "profile_pic.jpg"
         db.session.add(user)
         db.session.commit()
@@ -202,5 +201,5 @@ def sign_s3():
     content = json.dumps({
         'signed_request': '%s?AWSAccessKeyId=%s&Expires=%s&Signature=%s' % (url, os.environ["AWS_ACCESS_KEY"], expires, signature),
         'url': url,
-    })
+        })
     return content
